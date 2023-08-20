@@ -50,10 +50,6 @@ public class Assam {
      */
     public static Assam createStatus(String input) {
         String[] status = input.split(",");
-        if (status.length != 3) {
-            throw new IllegalArgumentException("Invalid input format");
-        }
-
         IntPair intPair = IntPair.createIntPair(status[0] + "," + status[1]);
 
         return new Assam(intPair, status[2].trim());

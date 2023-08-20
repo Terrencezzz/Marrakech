@@ -21,11 +21,12 @@ public class Rug {
     public String[] playerNumber;
 
 
-    private List<List<IntPair>> bluePiece;
-    private List<List<IntPair>> redPiece;
-    private List<List<IntPair>> yellowPiece;
-    private List<List<IntPair>> brownPiece;
-    private List<List<IntPair>> position;
+    private List<IntPair> bluePiece;
+    private List<IntPair> redPiece;
+    private List<IntPair> yellowPiece;
+    private List<IntPair> brownPiece;
+    private List<IntPair> position;
+    private List<List<IntPair>> combinePosition;
 
     public int blueRugNumber = 0;
     public int redRugNumber = 0;
@@ -33,7 +34,7 @@ public class Rug {
     public int brownRugNumber = 0;
 
 
-    public Rug(String rugType, List<List<IntPair>> position){
+    public Rug(String rugType, List<IntPair> position){
         this.rugType = rugType;
         this.position = position;
     }
@@ -52,8 +53,18 @@ public class Rug {
      * If your rug cover other's rug, use this function to delete other's.(This is not done yet!!!)
      * @return
      */
-    public List<List<IntPair>> deletePosition(){
+    public List<IntPair> replacePosition(){
         return position;
     }
 
+
+    /**
+     * This function aims to combine the same rugs next to each other in to a whole piece.
+     * You can use the length of one of the element in this list to calculate the money that one player
+     * needs to pay for another.(This is not done yet!!!)
+     * @return
+     */
+    public List<List<IntPair>> combinePosition(){
+        return combinePosition;
+    }
 }
