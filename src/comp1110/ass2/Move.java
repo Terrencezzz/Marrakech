@@ -8,11 +8,11 @@ public class Move {
 
     private final IntPair translation;
 
-    private final String direction;
-
-    public enum Direction {
-        UP, DOWN, LEFT, RIGHT;
-    }
+    private final String direction1 = "Down";
+    private final String direction2 = "Up";
+    private final String direction3 = "Right";
+    private final String direction4 = "Left";
+    public String direction;
 
 
     public Move(IntPair translation, String direction){
