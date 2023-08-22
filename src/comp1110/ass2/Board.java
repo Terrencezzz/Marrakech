@@ -3,7 +3,7 @@ package comp1110.ass2;
 import java.util.List;
 import java.util.ArrayList;
 public class Board {
-    private final int BOARD_SIZE = 7; // for a 7x7 board
+    private static final int BOARD_SIZE = 7;
     private final String[][] board = new String[BOARD_SIZE][BOARD_SIZE];
 
     public List<IntPair> bluePositionsList = new ArrayList<>();
