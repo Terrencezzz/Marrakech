@@ -33,4 +33,13 @@ public class Rug {
         // Add logic here
         return combinedList;
     }
+
+
+    /**
+     * This function aims to calculate how much u need to pay tor other's.(This is not done yet!!!)
+     * @return
+     */
+    public static int countPayment(){
+        return 0;
+    }
 }
