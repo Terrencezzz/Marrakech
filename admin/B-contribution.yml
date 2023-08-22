@@ -9,9 +9,9 @@ declaration: >-
 # members).  
 contributions:
   - uid: u7642453
-    contribution: code skeleton
+    contribution: 50
   - uid: u7605001
-    contribution: B-design.pdf
+    contribution: 50
 
 # Sign *your* name and uids here. (Remove entries if you have fewer
 # than three members)
