@@ -27,7 +27,7 @@ public class Assam {
 
     /**
      * You can get the current position of Assam by using this function.
-     * @return
+     * @return The current position of Assam as an IntPair.
      */
     public IntPair getPosition(){
         return position;
@@ -36,7 +36,7 @@ public class Assam {
 
     /**
      * You can get the current direction of Assam by using this function.
-     * @return
+     * @return The current direction of Assam.
      */
     public String getDirection(){
         return direction;
@@ -44,9 +44,9 @@ public class Assam {
 
 
     /**
-     * Combine position and direction to a new type Status.
-     * @param input
-     * @return
+     * Create a new Assam object based on the given input string.
+     * @param input Input string containing Assam's position and direction.
+     * @return A new Assam object.
      */
     public static Assam createStatus(String input) {
         String[] status = input.split(",");
