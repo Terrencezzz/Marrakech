@@ -14,7 +14,7 @@ public class Die {
      * @return A random number that could come up when this die is rolled.
      */
     public int getDieNumber() {
-        int index = random.nextInt(FACES.length);
+        int index = random.nextInt(FACES.length-1);
         return FACES[index];
 
 

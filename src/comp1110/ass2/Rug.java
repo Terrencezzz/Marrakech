@@ -2,7 +2,6 @@ package comp1110.ass2;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
 
 /**
  * This class aims to record the status for every players' rugs.

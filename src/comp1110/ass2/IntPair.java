@@ -40,30 +40,16 @@ public class IntPair {
 
 
     /**
-     * To create an IntPair object from a string containing the x and y coordinates.
-     * The string input should be in the format "x,y".
-     * @param input The string containing the x and y coordinates, separated by a comma.
-     * @return A new IntPair object with the parsed coordinates.
-     * @throws IllegalArgumentException if the input is null, empty, or incorrectly formatted.
+     * To combine x and y as an IntPair.
+     * @param input
+     * @return
      */
-    public static IntPair createIntPair(String input) {
-        if (input == null || input.isEmpty()) {
-            throw new IllegalArgumentException("Input cannot be null or empty.");
-        }
-
+    public static IntPair createIntPair(String input){
         String[] intPair = input.split(",");
-
-        if (intPair.length != 2) {
-            throw new IllegalArgumentException("Input must contain exactly two coordinates separated by a comma.");
-        }
-
-        try {
-            int x = Integer.parseInt(intPair[0]);
-            int y = Integer.parseInt(intPair[1]);
-            return new IntPair(x, y);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Coordinates must be integers.", e);
-        }
+        int x = Integer.parseInt(intPair[0]);
+        int y = Integer.parseInt(intPair[1]);
+        return new IntPair(x,y);
     }
+
 }
 

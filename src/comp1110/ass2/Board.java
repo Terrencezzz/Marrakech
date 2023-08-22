@@ -6,6 +6,12 @@ public class Board {
     private static final int BOARD_SIZE = 7;
     private final String[][] board = new String[BOARD_SIZE][BOARD_SIZE];
 
+    public List<IntPair> bluePositionsList = new ArrayList<>();
+    public List<IntPair> redPositionsList = new ArrayList<>();
+    public List<IntPair> yellowPositionsList = new ArrayList<>();
+    public List<IntPair> brownPositionsList = new ArrayList<>();
+
+
     /**
      * Places a rug on the board with specified coordinates and color.
      *
@@ -20,8 +26,6 @@ public class Board {
         if (startX >= 0 && startY >= 0 && endX < BOARD_SIZE && endY < BOARD_SIZE) {
             board[startX][startY] = rugColor;
             board[endX][endY] = rugColor;
-        } else {
-            throw new IllegalArgumentException("Invalid coordinates for placing rug.");
         }
     }
 
@@ -44,9 +48,6 @@ public class Board {
             int x = position.getX();
             int y = position.getY();
             board[x][y] = rugColor;
-            //If the initial position is invalid, throw an exception
-        } else {
-            throw new IllegalArgumentException("Invalid coordinates for placing rug.");
         }
     }
 
