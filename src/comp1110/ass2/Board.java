@@ -45,7 +45,6 @@ public class Board {
             case "Brown" -> brownPositionsList.add(pair);
             default -> {
             }
-            // Handle any unexpected colors or cases
         }
     }
 
