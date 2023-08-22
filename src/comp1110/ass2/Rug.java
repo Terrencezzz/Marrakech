@@ -2,6 +2,7 @@ package comp1110.ass2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
 
 /**
  * This class aims to record the status for every players' rugs.
@@ -22,16 +23,39 @@ public class Rug {
 
     /**
      * This function aims to combine the same rugs next to each other into a whole piece.
-     * This function needs to be fleshed out.
      *
      * @param positionList - the list of positions for a specific color
      * @return - the combined positions
      */
     public static List<List<IntPair>> combinePosition(List<IntPair> positionList) {
-        // TODO: Implement the method
         List<List<IntPair>> combinedList = new ArrayList<>();
-        // Add logic here
+
+        for (IntPair pair : positionList) {
+            boolean added = false;
+
+            for (List<IntPair> group : combinedList) {
+                for (IntPair inGroup : group) {
+                    if (isAdjacent(inGroup, pair)) {
+                        group.add(pair);
+                        added = true;
+                        break;
+                    }
+                }
+                if (added) break;
+            }
+
+            if (!added) {
+                List<IntPair> newGroup = new ArrayList<>();
+                newGroup.add(pair);
+                combinedList.add(newGroup);
+            }
+        }
+
         return combinedList;
+    }
+
+    public static boolean isAdjacent(IntPair a, IntPair b) {
+        return (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY())) == 1;
     }
 
 
@@ -43,3 +67,4 @@ public class Rug {
         return 0;
     }
 }
+
