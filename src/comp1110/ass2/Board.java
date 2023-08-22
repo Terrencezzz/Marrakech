@@ -1,8 +1,15 @@
 package comp1110.ass2;
 
+import java.util.List;
+import java.util.ArrayList;
 public class Board {
     private final int BOARD_SIZE = 7; // for a 7x7 board
     private final String[][] board = new String[BOARD_SIZE][BOARD_SIZE];
+
+    public List<IntPair> bluePositionsList = new ArrayList<>();
+    public List<IntPair> redPositionsList = new ArrayList<>();
+    public List<IntPair> yellowPositionsList = new ArrayList<>();
+    public List<IntPair> brownPositionsList = new ArrayList<>();
 
 
     public Board(IntPair position, String rugColor) {
@@ -17,9 +24,30 @@ public class Board {
         int x = position.getX();
         int y = position.getY();
         board[x][y] = rugColor;
+
+        updateColorPositions(x, y, rugColor);
     }
 
+    /**
+     * This is a helper function for updating the status of the board.
+     * Each time a new rug is placed on the board, this function will be called.
+     * @param x
+     * @param y
+     * @param rugColor
+     */
+    private void updateColorPositions(int x, int y, String rugColor) {
+        IntPair pair = new IntPair(x, y);
 
+        switch (rugColor) {
+            case "Blue" -> bluePositionsList.add(pair);
+            case "Red" -> redPositionsList.add(pair);
+            case "Yellow" -> yellowPositionsList.add(pair);
+            case "Brown" -> brownPositionsList.add(pair);
+            default -> {
+            }
+            // Handle any unexpected colors or cases
+        }
+    }
 
 
     /**
