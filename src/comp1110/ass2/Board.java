@@ -2,7 +2,7 @@ package comp1110.ass2;
 
 public class Board {
     private final int BOARD_SIZE = 7; // for a 7x7 board
-    private String[][] board = new String[BOARD_SIZE][BOARD_SIZE];
+    private final String[][] board = new String[BOARD_SIZE][BOARD_SIZE];
 
 
     public Board(IntPair position, String rugColor) {
@@ -18,6 +18,8 @@ public class Board {
         int y = position.getY();
         board[x][y] = rugColor;
     }
+
+
 
 
     /**
