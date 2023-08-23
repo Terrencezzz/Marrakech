@@ -6,7 +6,9 @@ package comp1110.ass2;
  */
 public class Move {
 
-    private final IntPair translation;
+    private IntPair translation;
+    private String direction;
+    private final Die die;  // Added Die object
 
     private final String direction1 = "Down";
     private final String direction2 = "Up";
@@ -15,9 +17,10 @@ public class Move {
     public String direction;
 
 
-    public Move(IntPair translation, String direction) {
+    public Move(IntPair translation, String direction, Die die) {
         this.translation = translation;
         this.direction = direction;
+        this.die = die;
     }
 
     /**
