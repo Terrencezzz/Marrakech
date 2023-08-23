@@ -52,7 +52,13 @@ public class Rug {
 
         return combinedList;
     }
-
+    /**
+     * Checks if two positions are adjacent.
+     *
+     * @param a - The first IntPair position.
+     * @param b - The second IntPair position.
+     * @return - True if adjacent, false otherwise.
+     */
     public static boolean isAdjacent(IntPair a, IntPair b) {
         return (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY())) == 1;
     }
