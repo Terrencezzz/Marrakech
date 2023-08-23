@@ -71,7 +71,7 @@ public class Rug {
      *
      * @return - A map where the key is the color, and the value is the total amount to be paid to other players.
      */
-    public Map<String, Integer> countPayment() {
+    /* public Map<String, Integer> countPayment() {
         Map<String, Integer> payments = new HashMap<>();
 
         // Initialize payment counters for each color
@@ -141,4 +141,5 @@ public class Rug {
             return payments;
         }
     }
+     */
 }
