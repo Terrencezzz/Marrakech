@@ -24,18 +24,20 @@ public class Move {
     }
 
     /**
-     * Applies the transformation to the customer.(This one is not done yet!!!)
-     * It will combine translation and direction.
-
-     * @return A new position after applying the transform
+     * Applies the transformation to the customer based on the die roll.
+     * The function adds the die's number to both the X and Y coordinates of the customer's current position.
+     *
+     * @return IntPair representing the new coordinates after applying the die effect
      */
     public IntPair applyTransform() {
         int dieEffect = die.getDieNumber();
         return new IntPair(translation.getX() + dieEffect, translation.getY() + dieEffect);
 }
     /**
-     * To check which direction does the customer faces.(This is not done yet!!!)
-     * @return
+     * Determines the direction the customer is facing based on the die roll.
+     * Uses modulo operation to cycle through the four possible directions.
+     *
+     * @return String representing the new direction the customer is facing
      */
     public String checkDirection() {
 
