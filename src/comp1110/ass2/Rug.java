@@ -2,6 +2,8 @@ package comp1110.ass2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class aims to record the status for every players' rugs.
@@ -52,18 +54,92 @@ public class Rug {
 
         return combinedList;
     }
-
+    /**
+     * Checks if two positions are adjacent.
+     *
+     * @param a - The first IntPair position.
+     * @param b - The second IntPair position.
+     * @return - True if adjacent, false otherwise.
+     */
     public static boolean isAdjacent(IntPair a, IntPair b) {
         return (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY())) == 1;
     }
 
 
     /**
-     * This function aims to calculate how much u need to pay tor other's.(This is not done yet!!!)
-     * @return
+     Calculates the payment each player needs to make to others based on rug adjacency.
+     *
+     * @return - A map where the key is the color, and the value is the total amount to be paid to other players.
      */
-    public static int countPayment(){
-        return 0;
-    }
-}
+    /* public Map<String, Integer> countPayment() {
+        Map<String, Integer> payments = new HashMap<>();
 
+        // Initialize payment counters for each color
+        payments.put("Blue", 0);
+        payments.put("Red", 0);
+        payments.put("Yellow", 0);
+        payments.put("Brown", 0);
+
+        // Nested loops for all color combinations
+        for (String colorA : payments.keySet()) {
+            for (String colorB : payments.keySet()) {
+                if (!colorA.equals(colorB)) {
+                    List<List<IntPair>> groupA = null; // Initialize to null
+                    List<List<IntPair>> groupB = null; // Initialize to null
+
+                    switch (colorA) {
+                        case "Blue":
+                            groupA = bluePiece;
+                            break;
+                        case "Red":
+                            groupA = redPiece;
+                            break;
+                        case "Yellow":
+                            groupA = yellowPiece;
+                            break;
+                        case "Brown":
+                            groupA = brownPiece;
+                            break;
+                        //default:
+                        //throw new IllegalStateException("Invalid color: " + colorA);
+                    }
+
+                    switch (colorB) {
+                        case "Blue":
+                            groupB = bluePiece;
+                            break;
+                        case "Red":
+                            groupB = redPiece;
+                            break;
+                        case "Yellow":
+                            groupB = yellowPiece;
+                            break;
+                        case "Brown":
+                            groupB = brownPiece;
+                            break;
+                        //default:
+                        //throw new IllegalStateException("Invalid color: " + colorB);
+                    }
+
+                    // Make sure the groups are not null before proceeding (you could also throw an exception here)
+                    if (groupA != null && groupB != null) {
+                        for (List<IntPair> groupFromA : groupA) {
+                            for (IntPair tileFromA : groupFromA) {
+                                for (List<IntPair> groupFromB : groupB) {
+                                    for (IntPair tileFromB : groupFromB) {
+                                        if (isAdjacent(tileFromA, tileFromB)) {
+                                            payments.put(colorA, payments.get(colorA) + 1);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return payments;
+        }
+    }
+     */
+}
