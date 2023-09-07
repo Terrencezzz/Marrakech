@@ -6,9 +6,13 @@ package comp1110.ass2;
  */
 public class Assam {
 
-    public IntPair position;
 
-    public String direction;
+    public enum Direction {
+        UP, DOWN, RIGHT, LEFT
+    }
+    private IntPair position;
+
+    private Direction direction;
 
 
     /**
@@ -16,10 +20,10 @@ public class Assam {
      */
     public Assam(){
         this.position = new IntPair(3,3);
-        this.direction = "Down";
+        this.direction = Direction.DOWN;
     }
 
-    public Assam(IntPair position, String direction){
+    public Assam(IntPair position, Direction direction){
         this.position = position;
         this.direction = direction;
     }
@@ -38,7 +42,7 @@ public class Assam {
      * You can get the current direction of Assam by using this function.
      * @return The current direction of Assam.
      */
-    public String getDirection(){
+    public Direction getDirection(){
         return direction;
     }
 
@@ -51,8 +55,9 @@ public class Assam {
     public static Assam createStatus(String input) {
         String[] status = input.split(",");
         IntPair intPair = IntPair.createIntPair(status[0] + "," + status[1]);
+        Direction dir = Direction.valueOf(status[2].trim().toUpperCase());
 
-        return new Assam(intPair, status[2].trim());
+        return new Assam(intPair, dir);
     }
 }
 
