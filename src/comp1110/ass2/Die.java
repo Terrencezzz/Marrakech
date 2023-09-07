@@ -16,7 +16,5 @@ public class Die {
     public int getDieNumber() {
         int index = random.nextInt(FACES.length);
         return FACES[index];
-
-
     }
 }

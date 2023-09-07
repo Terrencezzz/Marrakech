@@ -1,16 +1,20 @@
 package comp1110.ass2;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 public class Board {
     private static final int BOARD_SIZE = 7;
     private final String[][] board = new String[BOARD_SIZE][BOARD_SIZE];
 
-    public List<IntPair> bluePositionsList = new ArrayList<>();
+    private List<IntPair> bluePositionsList = new ArrayList<>();
     public List<IntPair> redPositionsList = new ArrayList<>();
     public List<IntPair> yellowPositionsList = new ArrayList<>();
     public List<IntPair> brownPositionsList = new ArrayList<>();
 
+    public List<IntPair> getBluePositionsList() {
+        return bluePositionsList;
+    }
 
     /**
      * Places a rug on the board with specified coordinates and color.
