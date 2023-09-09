@@ -35,17 +35,5 @@ public class IntPair{
     public int getY() {
         return y;
     }
-
-
-    /**
-     * To combine getX and y as an IntPair.
-     */
-    public static IntPair createIntPair(String input) {
-        String[] intPair = input.split(",");
-        int x = Integer.parseInt(intPair[0]);
-        int y = Integer.parseInt(intPair[1]);
-        return new IntPair(x, y);
-    }
-
 }
 
