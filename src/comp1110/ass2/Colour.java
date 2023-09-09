@@ -1,7 +1,10 @@
 package comp1110.ass2;
 
 public enum Colour {
-    YELLOW('Y');
+    YELLOW('y'),
+    PURPLE('p'),
+    CYAN('c'),
+    RED('r');
 
     private final char c;
     Colour(char c) {
