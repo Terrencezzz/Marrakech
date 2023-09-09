@@ -10,10 +10,6 @@ public class Move {
     private Direction direction;
     private final Die die;
 
-    public enum Direction {
-        UP, DOWN, RIGHT, LEFT
-    }
-
 
     public Move(IntPair translation, Direction direction, Die die) {
         this.translation = translation;
@@ -37,28 +33,28 @@ public class Move {
         int newY = translation.getY();
 
         while (dieEffect > 0) {
-            if (direction == Direction.UP) {
+            if (direction == Direction.NORTH) {
                 newY += 1;
                 if (newY > 6) {
                     newY = 6;
                     turnLeft();
                     continue;
                 }
-            } else if (direction == Direction.DOWN) {
+            } else if (direction == Direction.SOUTH) {
                 newY -= 1;
                 if (newY < 0) {
                     newY = 0;
                     turnLeft();
                     continue;
                 }
-            } else if (direction == Direction.RIGHT) {
+            } else if (direction == Direction.EAST) {
                 newX += 1;
                 if (newX > 6) {
                     newX = 6;
                     turnLeft();
                     continue;
                 }
-            } else if (direction == Direction.LEFT) {
+            } else if (direction == Direction.WEST) {
                 newX -= 1;
                 if (newX < 0) {
                     newX = 0;
@@ -78,10 +74,10 @@ public class Move {
      */
     private void turnLeft() {
         switch (direction) {
-            case UP -> direction = Direction.LEFT;
-            case DOWN -> direction = Direction.RIGHT;
-            case RIGHT -> direction = Direction.UP;
-            case LEFT -> direction = Direction.DOWN;
+            case NORTH -> direction = Direction.WEST;
+            case SOUTH -> direction = Direction.EAST;
+            case EAST -> direction = Direction.NORTH;
+            case WEST -> direction = Direction.SOUTH;
         }
     }
 

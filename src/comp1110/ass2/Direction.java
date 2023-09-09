@@ -26,6 +26,4 @@ public enum Direction {
              default -> null;
          };
     }
-
-
 }
