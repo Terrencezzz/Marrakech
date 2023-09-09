@@ -2,53 +2,49 @@ package comp1110.ass2;
 
 
 /**
- *This class is aimed to meet some requirements about the coordinate system.
+ * This class is aimed to meet some requirements about the coordinate system.
  */
-public class IntPair {
-    private final int x;
-    private final int y;
-
-
-
+public class IntPair{
     /**
-     *Constructor for IntPair, aims to combine x and y to (x , y)
-     * @param x
-     * @param y
+     * Constructor for IntPair, aims to combine getX and y to (getX , y)
      */
-    public IntPair(int x, int y){
+    private int x;
+    private int y;
+
+    public IntPair(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
 
     /**
-     * This is a getter method for x, if you want to use x, then use getX().
-     * @return The x-coordinate of the IntPair.
+     * This is a getter method for getX, if you want to use getX, then use getX().
+     *
+     * @return The getX-coordinate of the IntPair.
      */
-    public int getX(){
+    public int getX() {
         return x;
     }
 
 
     /**
      * This is a getter method for y, if you want to use y, then use getY().
-      * @return The y-coordinate of the IntPair.
+     *
+     * @return The y-coordinate of the IntPair.
      */
-    public int getY(){
+    public int getY() {
         return y;
     }
 
 
     /**
-     * To combine x and y as an IntPair.
-     * @param input
-     * @return
+     * To combine getX and y as an IntPair.
      */
-    public static IntPair createIntPair(String input){
+    public static IntPair createIntPair(String input) {
         String[] intPair = input.split(",");
         int x = Integer.parseInt(intPair[0]);
         int y = Integer.parseInt(intPair[1]);
-        return new IntPair(x,y);
+        return new IntPair(x, y);
     }
 
 }

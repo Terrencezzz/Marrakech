@@ -1,35 +1,39 @@
 package comp1110.ass2;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 public class Board {
     private static final int BOARD_SIZE = 7;
     private final String[][] board = new String[BOARD_SIZE][BOARD_SIZE];
 
-    private List<IntPair> bluePositionsList = new ArrayList<>();
-    public List<IntPair> redPositionsList = new ArrayList<>();
-    public List<IntPair> yellowPositionsList = new ArrayList<>();
-    public List<IntPair> brownPositionsList = new ArrayList<>();
+    private static List<IntPair> bluePositionsList;
+    private static List<IntPair> redPositionsList;
+    private static List<IntPair> yellowPositionsList;
+    private static List<IntPair> brownPositionsList;
 
-    public List<IntPair> getBluePositionsList() {
+    public static List<IntPair> getBluePositionsList() {
         return bluePositionsList;
+    }
+
+    public static List<IntPair> getRedPositionsList() {
+        return redPositionsList;
+    }
+
+    public static List<IntPair> getYellowPositionsList() {
+        return yellowPositionsList; }
+
+    public static List<IntPair> getBrownPositionsList() {
+        return brownPositionsList;
     }
 
     /**
      * Places a rug on the board with specified coordinates and color.
-     *
-     * @param startX The X-coordinate of the starting point of the rug.
-     * @param startY The Y-coordinate of the starting point of the rug.
-     * @param endX The X-coordinate of the ending point of the rug.
-     * @param endY The Y-coordinate of the ending point of the rug.
-     * @param rugColor The color of the rug to be placed.
-     * @throws IllegalArgumentException If the provided coordinates are invalid for placing the rug.
      */
-    public void placeRug(int startX, int startY, int endX, int endY, String rugColor) {
-        if (startX >= 0 && startY >= 0 && endX < BOARD_SIZE && endY < BOARD_SIZE) {
-            board[startX][startY] = rugColor;
-            board[endX][endY] = rugColor;
+    public void placeRug(IntPair position, String rugColor) {
+        int x = position.getX();
+        int y = position.getY();
+        if (x >= 0 && y >= 0 && x < BOARD_SIZE && y < BOARD_SIZE) {
+            board[x][y] = rugColor;
         }
     }
 
@@ -53,14 +57,16 @@ public class Board {
             int y = position.getY();
             board[x][y] = rugColor;
         }
+
+        bluePositionsList = new ArrayList<>();
+        redPositionsList = new ArrayList<>();
+        yellowPositionsList = new ArrayList<>();
+        brownPositionsList = new ArrayList<>();
     }
 
     /**
      * This is a helper function for updating the status of the board.
      * Each time a new rug is placed on the board, this function will be called.
-     * @param x
-     * @param y
-     * @param rugColor
      */
     private void updateColorPositions(int x, int y, String rugColor) {
         IntPair pair = new IntPair(x, y);
@@ -77,8 +83,8 @@ public class Board {
 
 
     /**
-     * Make the board looks like: ((x,y),Null).
-     * @return A string representing the board, with each cell as "((x,y),Value)".
+     * Make the board looks like: ((getX,y),Null).
+     * @return A string representing the board, with each cell as "((getX,y),Value)".
      */
     @Override
     public String toString() {

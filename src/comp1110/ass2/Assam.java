@@ -6,10 +6,6 @@ package comp1110.ass2;
  */
 public class Assam {
 
-
-    public enum Direction {
-        UP, DOWN, RIGHT, LEFT
-    }
     private IntPair position;
 
     private Direction direction;
@@ -20,12 +16,23 @@ public class Assam {
      */
     public Assam(){
         this.position = new IntPair(3,3);
-        this.direction = Direction.DOWN;
+        this.direction = Direction.NORTH;
     }
 
     public Assam(IntPair position, Direction direction){
         this.position = position;
         this.direction = direction;
+    }
+
+    public Assam(String assamString) {
+        if (assamString.charAt(0) == 'A') {
+            int x = Integer.parseInt(String.valueOf(assamString.charAt(1)));
+            int y = Integer.parseInt(String.valueOf(assamString.charAt(2)));
+            this.position = new IntPair(x, y);
+            this.direction = Direction.charToDirection(assamString.charAt(3));
+
+        }
+
     }
 
 
@@ -44,20 +51,6 @@ public class Assam {
      */
     public Direction getDirection(){
         return direction;
-    }
-
-
-    /**
-     * Create a new Assam object based on the given input string.
-     * @param input Input string containing Assam's position and direction.
-     * @return A new Assam object.
-     */
-    public static Assam createStatus(String input) {
-        String[] status = input.split(",");
-        IntPair intPair = IntPair.createIntPair(status[0] + "," + status[1]);
-        Direction dir = Direction.valueOf(status[2].trim().toUpperCase());
-
-        return new Assam(intPair, dir);
     }
 }
 

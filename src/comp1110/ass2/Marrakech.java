@@ -42,8 +42,7 @@ public class Marrakech {
      * @return The result of the roll of the die meeting the criteria above
      */
     public static int rollDie() {
-        // FIXME: Task 6
-        return -1;
+        return Die.getDieNumber();
     }
 
     /**
