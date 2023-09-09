@@ -19,10 +19,12 @@ public class Assam {
         this.direction = Direction.NORTH;
     }
 
+
     public Assam(IntPair position, Direction direction){
         this.position = position;
         this.direction = direction;
     }
+
 
     public Assam(String assamString) {
         if (assamString.charAt(0) == 'A') {
@@ -30,9 +32,7 @@ public class Assam {
             int y = Integer.parseInt(String.valueOf(assamString.charAt(2)));
             this.position = new IntPair(x, y);
             this.direction = Direction.charToDirection(assamString.charAt(3));
-
         }
-
     }
 
 
