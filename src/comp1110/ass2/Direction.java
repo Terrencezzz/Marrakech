@@ -1,11 +1,11 @@
 package comp1110.ass2;
 
 public enum Direction {
-
+    NORTH(0,'N'),
     EAST(90,'E'),
-    WEST(270,'W'),
     SOUTH(180,'S'),
-    NORTH(0,'N');
+    WEST(270,'W');
+
 
     private char dChar;
     private int angle;
