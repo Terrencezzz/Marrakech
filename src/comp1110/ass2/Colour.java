@@ -20,4 +20,14 @@ public enum Colour {
             default -> null;
         };
     }
+
+
+    public static char colourToChar(Colour colour) {
+        return switch (colour) {
+            case YELLOW -> 'y';
+            case PURPLE -> 'p';
+            case CYAN -> 'c';
+            case RED -> 'r';
+        };
+    }
 }

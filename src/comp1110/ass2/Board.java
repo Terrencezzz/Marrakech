@@ -1,5 +1,7 @@
 package comp1110.ass2;
 
+import comp1110.ass2.IntPair;
+
 import java.util.List;
 import java.util.ArrayList;
 public class Board {

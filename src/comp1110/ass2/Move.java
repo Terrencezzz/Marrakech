@@ -27,8 +27,12 @@ public class Move {
      * If Assam hit the board edge, then turn left.(7 getX 7 board)
      * @return IntPair representing the new coordinates after applying the die effect
      */
-    public IntPair applyTransform() {
-        int dieEffect = die.getDieNumber();
+    // Translation vector (1,2), position (1,1),
+    // Move move = new Move(...)
+    // IntPair assamPos = assam.getPosition();
+    // move.applyTransform(assamPos)
+    public IntPair applyTransform(IntPair position, Direction direction) {
+        int dieEffect = Die.getDieNumber();
         int newX = translation.getX();
         int newY = translation.getY();
 

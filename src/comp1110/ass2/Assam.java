@@ -52,6 +52,15 @@ public class Assam {
     public Direction getDirection(){
         return direction;
     }
+
+
+//    public static void main(String[] args) {
+//        Assam assamString = new Assam("A04N", rotation);
+//        IntPair position = assamString.position;
+//        Direction direction = assamString.direction;
+//        Assam assam = new Assam(position, direction);
+//        System.out.println(assam.getPosition().getY());
+//    }
 }
 
 

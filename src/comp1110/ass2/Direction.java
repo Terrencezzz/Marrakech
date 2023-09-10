@@ -1,7 +1,5 @@
 package comp1110.ass2;
 
-import javax.swing.text.DefaultEditorKit;
-
 public enum Direction {
 
     EAST(90,'E'),
@@ -9,8 +7,10 @@ public enum Direction {
     SOUTH(180,'S'),
     NORTH(0,'N');
 
-    private final char dChar;
-    private final int angle;
+    private char dChar;
+    private int angle;
+
+
 
     Direction(int angle, char dChar) {
         this.dChar = dChar;
@@ -26,4 +26,14 @@ public enum Direction {
              default -> null;
          };
     }
+
+    public static char directionToChar (Direction direction) {
+        return switch (direction) {
+            case EAST -> 'E';
+            case NORTH -> 'N';
+            case WEST -> 'W';
+            case SOUTH -> 'S';
+        };
+    }
+
 }
