@@ -14,13 +14,13 @@ public class Assam {
     /**
      * Initialize the status of Assam to position (3,3) and direction "Down".
      */
-    public Assam(){
-        this.position = new IntPair(3,3);
+    public Assam() {
+        this.position = new IntPair(3, 3);
         this.direction = Direction.NORTH;
     }
 
 
-    public Assam(IntPair position, Direction direction){
+    public Assam(IntPair position, Direction direction) {
         this.position = position;
         this.direction = direction;
     }
@@ -38,30 +38,24 @@ public class Assam {
 
     /**
      * You can get the current position of Assam by using this function.
+     *
      * @return The current position of Assam as an IntPair.
      */
-    public IntPair getPosition(){
+    public IntPair getPosition() {
         return position;
     }
 
 
     /**
      * You can get the current direction of Assam by using this function.
+     *
      * @return The current direction of Assam.
      */
-    public Direction getDirection(){
+    public Direction getDirection() {
         return direction;
     }
-
-
-//    public static void main(String[] args) {
-//        Assam assamString = new Assam("A04N", rotation);
-//        IntPair position = assamString.position;
-//        Direction direction = assamString.direction;
-//        Assam assam = new Assam(position, direction);
-//        System.out.println(assam.getPosition().getY());
-//    }
 }
+
 
 
 
