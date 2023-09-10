@@ -1,103 +1,22 @@
 package comp1110.ass2;
 
-import comp1110.ass2.IntPair;
-
-import java.util.List;
-import java.util.ArrayList;
 public class Board {
-    private static final int BOARD_SIZE = 7;
-    private final String[][] board = new String[BOARD_SIZE][BOARD_SIZE];
+    private static final int ROWS = 7;
+    private static final int COLUMNS = 7;
+    private String[][] board;
 
-    private static List<IntPair> bluePositionsList;
-    private static List<IntPair> redPositionsList;
-    private static List<IntPair> yellowPositionsList;
-    private static List<IntPair> brownPositionsList;
-
-    public static List<IntPair> getBluePositionsList() {
-        return bluePositionsList;
-    }
-
-    public static List<IntPair> getRedPositionsList() {
-        return redPositionsList;
-    }
-
-    public static List<IntPair> getYellowPositionsList() {
-        return yellowPositionsList; }
-
-    public static List<IntPair> getBrownPositionsList() {
-        return brownPositionsList;
-    }
-
-    /**
-     * Places a rug on the board with specified coordinates and color.
-     */
-    public void placeRug(IntPair position, String rugColor) {
-        int x = position.getX();
-        int y = position.getY();
-        if (x >= 0 && y >= 0 && x < BOARD_SIZE && y < BOARD_SIZE) {
-            board[x][y] = rugColor;
-        }
-    }
-
-    /**
-     * Initializes the board and places the first rug at the specified position.
-     *
-     * @param position The initial position (coordinates) for placing the first rug.
-     * @param rugColor The color of the rug to be placed.
-     * @throws IllegalArgumentException If the provided initial position is outside the board boundaries.
-     */
-    public Board(IntPair position, String rugColor) {
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            for (int j = 0; j < BOARD_SIZE; j++) {
-                board[i][j] = null;
-            }
-        }
-
-        if (position.getX() >= 0 && position.getY() >= 0 && position.getX() < BOARD_SIZE && position.getY() < BOARD_SIZE) {
-            // If the initial position is valid, place the rug
-            int x = position.getX();
-            int y = position.getY();
-            board[x][y] = rugColor;
-        }
-
-        bluePositionsList = new ArrayList<>();
-        redPositionsList = new ArrayList<>();
-        yellowPositionsList = new ArrayList<>();
-        brownPositionsList = new ArrayList<>();
-    }
-
-    /**
-     * This is a helper function for updating the status of the board.
-     * Each time a new rug is placed on the board, this function will be called.
-     */
-    private void updateColorPositions(int x, int y, String rugColor) {
-        IntPair pair = new IntPair(x, y);
-
-        switch (rugColor) {
-            case "Blue" -> bluePositionsList.add(pair);
-            case "Red" -> redPositionsList.add(pair);
-            case "Yellow" -> yellowPositionsList.add(pair);
-            case "Brown" -> brownPositionsList.add(pair);
-            default -> {
+    public Board() {
+        board = new String[ROWS][COLUMNS];
+        for (int i = 0; i < ROWS; i++) {
+            for (int j = 0; j < COLUMNS; j++) {
+                board[i][j] = "n00"; // Initialize each square with the special null string
             }
         }
     }
 
-
-    /**
-     * Make the board looks like: ((getX,y),Null).
-     * @return A string representing the board, with each cell as "((getX,y),Value)".
-     */
-    @Override
-    public String toString() {
-        StringBuilder boardStatus = new StringBuilder();
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            for (int j = 0; j < BOARD_SIZE; j++) {
-                boardStatus.append("(").append(i).append(",").append(j).append("),");
-                boardStatus.append(board[i][j] == null ? "Null" : board[i][j]).append("\n");
-            }
-        }
-        return boardStatus.toString();
+    // Set a rug on a given position
+    public void setRug(int x, int y, String rugString) {
+        board[x][y] = rugString;
     }
-
 }
+

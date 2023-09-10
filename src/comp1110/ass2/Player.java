@@ -14,6 +14,9 @@ public class Player {
         this.colour = colour;
     }
 
+    /**
+     * In order to pass the test, I make this shit done.
+     */
     Player(String playerString){
         if (playerString.charAt(0) == 'P') {
             this.colour = Colour.charToColour(playerString.charAt(1));
@@ -21,5 +24,41 @@ public class Player {
             this.rugNumber = Integer.parseInt(playerString.substring(5,7));
             this.status = playerString.charAt(7);
         }
+    }
+
+    /**
+     * The function below are all getter methods or setter methods, I'm not sure if I will use them or not, but I just
+     * keep them for now.
+     */
+    public int getDirhams() {
+        return dirhams;
+    }
+
+    public void setDirhams(int dirhams) {
+        this.dirhams = dirhams;
+    }
+
+    public int getRugNumber() {
+        return rugNumber;
+    }
+
+    public void setRugNumber(int rugNumber) {
+        this.rugNumber = rugNumber;
+    }
+
+    public char getStatus() {
+        return status;
+    }
+
+    public void setStatus(char status) {
+        this.status = status;
+    }
+
+    public Colour getColour() {
+        return colour;
+    }
+
+    public void setColour(Colour colour) {
+        this.colour = colour;
     }
 }
