@@ -27,24 +27,20 @@ public class Marrakech {
      */
     public static boolean isRugValid(String gameString, String rug) {//Task 4
 
-        // Check if the rug string is 7 characters long
         if (rug.length() != 7) {
             return false;
         }
 
-        // Check if the first character corresponds to a valid color character
         char color = rug.charAt(0);
         if (color != 'c' && color != 'y' && color != 'r' && color != 'p') {
             return false;
         }
 
-        // Check if the next two characters represent a valid 2-digit ID
         String id = rug.substring(1, 3);
         if (!id.matches("\\d{2}")) {
             return false;
         }
 
-        // Check if the next 4 characters represent valid board coordinates
         String coordinates = rug.substring(3);
         for (char c : coordinates.toCharArray()) {
             if (c < '0' || c > '6') { // Assuming the board is 7x7
@@ -52,11 +48,9 @@ public class Marrakech {
             }
         }
 
-        // Extract the board's rug section
         String boardRugs = gameString.substring(gameString.indexOf('B') + 1, gameString.indexOf('B') + 1 + (3 * 49));
 
-        // Check if the combination of color and ID is unique
-        String rugIdentifier = rug.substring(0, 3); // Gets color + ID
+        String rugIdentifier = rug.substring(0, 3);
         if (boardRugs.contains(rugIdentifier)) {
             return false;
         }

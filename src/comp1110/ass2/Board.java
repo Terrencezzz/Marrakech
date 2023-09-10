@@ -14,7 +14,9 @@ public class Board {
         }
     }
 
-    // Set a rug on a given position
+    /**
+     * A setter method, hope this work.
+     */
     public void setRug(int x, int y, String rugString) {
         board[x][y] = rugString;
     }
