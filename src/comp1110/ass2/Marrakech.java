@@ -1,5 +1,8 @@
 package comp1110.ass2;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class Marrakech {
 
     /**
@@ -22,7 +25,7 @@ public class Marrakech {
      * @param rug A String representing the rug you are checking
      * @return true if the rug is valid, and false otherwise.
      */
-    public static boolean isRugValid(String gameString, String rug) {
+    public static boolean isRugValid(String gameString, String rug) {//Task 4
 
         // Check if the rug string is 7 characters long
         if (rug.length() != 7) {
@@ -77,9 +80,19 @@ public class Marrakech {
      * being twice as likely to be returned as a 1 or 4.
      * @return The result of the roll of the die meeting the criteria above
      */
-    public static int rollDie() {
-        return Die.getDieNumber();
+
+
+    public static int rollDie() { //Task 6
+        Random rand = new Random();
+        // Create an array representing the 6 faces of the die.
+        // 1 occurs once, 2 occurs twice, 3 occurs twice, and 4 occurs once.
+        int[] faces = {1, 2, 2, 3, 3, 4};
+        // Select a random index between 0 and 5.
+        int index = rand.nextInt(6);
+        // Return the value from the array.
+        return faces[index];
     }
+
 
     /**
      * Determine whether a game of Marrakech is over
@@ -89,10 +102,32 @@ public class Marrakech {
      * @param currentGame A String representation of the current state of the game.
      * @return true if the game is over, or false otherwise.
      */
-    public static boolean isGameOver(String currentGame) {
-        // FIXME: Task 8
-        return false;
+    public static boolean isGameOver(String currentGame) { //Task 8
+        if (currentGame == null || currentGame.isEmpty()) {
+            return false;  // Invalid game state, the game can't be over
+        }
+
+        String[] playerStates = currentGame.split(",");
+        for (String playerState : playerStates) {
+            String[] parts = playerState.split(":");
+            if (parts.length > 1) {
+                try {
+                    int numRugs = Integer.parseInt(parts[1]);
+                    if (numRugs == 0) {
+                        return true;  // Game is over if any player has zero rugs
+                    }
+                } catch (NumberFormatException e) {
+                    return false;  // Invalid number format, the game can't be over
+                }
+            } else {
+                return false;  // Malformed player state, the game can't be over
+            }
+        }
+        return false;  // No player has zero rugs, so the game is not over
     }
+
+
+
 
     /**
      * Implement Assam's rotation.
