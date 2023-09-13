@@ -8,12 +8,12 @@ public class IntPair{
     /**
      * Constructor for IntPair, aims to combine getX and y to (getX , y)
      */
-    private int x;
-    private int y;
+    private int col;
+    private int row;
 
     public IntPair(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.col = x;
+        this.row = y;
     }
 
 
@@ -22,8 +22,8 @@ public class IntPair{
      *
      * @return The getX-coordinate of the IntPair.
      */
-    public int getX() {
-        return x;
+    public int getCol() {
+        return col;
     }
 
 
@@ -32,8 +32,8 @@ public class IntPair{
      *
      * @return The y-coordinate of the IntPair.
      */
-    public int getY() {
-        return y;
+    public int getRow() {
+        return row;
     }
 }
 

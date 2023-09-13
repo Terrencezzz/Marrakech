@@ -1,8 +1,5 @@
 package comp1110.ass2;
 
-import java.util.Arrays;
-import java.util.Random;
-
 public class Marrakech {
 
     /**
@@ -25,33 +22,25 @@ public class Marrakech {
      * @param rug A String representing the rug you are checking
      * @return true if the rug is valid, and false otherwise.
      */
-    public static boolean isRugValid(String gameString, String rug) {//Task 4
+    public static boolean isRugValid(String gameString, String rug) {
+        Rug rugObj = new Rug(rug);
+        GameStatus gameStatus = new GameStatus(gameString);
 
         if (rug.length() != 7) {
             return false;
         }
-
-        char color = rug.charAt(0);
-        if (color != 'c' && color != 'y' && color != 'r' && color != 'p') {
+        else if (!gameStatus.getActivePlayersColors().contains(rugObj.getColour())) {
             return false;
         }
-
-        String id = rug.substring(1, 3);
-        if (!id.matches("\\d{2}")) {
+        else if (rugObj.getId() < 0 || rugObj.getId() > 99) {
             return false;
         }
-
-        String coordinates = rug.substring(3);
-        for (char c : coordinates.toCharArray()) {
-            if (c < '0' || c > '6') { // Assuming the board is 7x7
-                return false;
-            }
+        else if (rugObj.isPlaceNotValid()) {
+            return false;
         }
-
-        String boardRugs = gameString.substring(gameString.indexOf('B') + 1);
-
-        String rugIdentifier = rug.substring(0, 3);
-        return !boardRugs.contains(rugIdentifier);
+        else {
+            return !gameStatus.getBoard().getRugsIdentifier().contains(rugObj.getIdentifier());
+        }
     }
 
 
@@ -70,19 +59,9 @@ public class Marrakech {
      * being twice as likely to be returned as a 1 or 4.
      * @return The result of the roll of the die meeting the criteria above
      */
-
-
-    public static int rollDie() { //Task 6
-        Random rand = new Random();
-        // Create an array representing the 6 faces of the die.
-        // 1 occurs once, 2 occurs twice, 3 occurs twice, and 4 occurs once.
-        int[] faces = {1, 2, 2, 3, 3, 4};
-        // Select a random index between 0 and 5.
-        int index = rand.nextInt(6);
-        // Return the value from the array.
-        return faces[index];
+    public static int rollDie() {
+        return Die.getDieNumber();
     }
-
 
     /**
      * Determine whether a game of Marrakech is over
@@ -92,32 +71,10 @@ public class Marrakech {
      * @param currentGame A String representation of the current state of the game.
      * @return true if the game is over, or false otherwise.
      */
-    public static boolean isGameOver(String currentGame) { //Task 8
-        if (currentGame == null || currentGame.isEmpty()) {
-            return false;  // Invalid game state, the game can't be over
-        }
-
-        String[] playerStates = currentGame.split(",");
-        for (String playerState : playerStates) {
-            String[] parts = playerState.split(":");
-            if (parts.length > 1) {
-                try {
-                    int numRugs = Integer.parseInt(parts[1]);
-                    if (numRugs == 0) {
-                        return true;  // Game is over if any player has zero rugs
-                    }
-                } catch (NumberFormatException e) {
-                    return false;  // Invalid number format, the game can't be over
-                }
-            } else {
-                return false;  // Malformed player state, the game can't be over
-            }
-        }
-        return false;  // No player has zero rugs, so the game is not over
+    public static boolean isGameOver(String currentGame) {
+        // FIXME: Task 8
+        return false;
     }
-
-
-
 
     /**
      * Implement Assam's rotation.

@@ -1,5 +1,8 @@
 package comp1110.ass2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private int dirhams;
     private int rugNumber;
@@ -54,11 +57,12 @@ public class Player {
         this.status = status;
     }
 
-    public Colour getColour() {
+    public Colour getPlayerColour() {
         return colour;
     }
 
     public void setColour(Colour colour) {
         this.colour = colour;
     }
+
 }

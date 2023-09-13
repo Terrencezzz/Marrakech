@@ -1,30 +1,29 @@
 package comp1110.ass2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board {
     private static final int ROWS = 7;
     private static final int COLUMNS = 7;
-    private String[][] board;
+    private List<String> rugsIdentifier = new ArrayList<>();
 
-    public Board() {
-        board = new String[ROWS][COLUMNS];
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; j++) {
-                board[i][j] = "n00"; // Initialize each square with the special null string
+    Board (List<String> rugs) {
+        this.rugsIdentifier = rugs;
+    }
+
+    Board(String boardString) {
+        if (boardString.length() == 49 * 3) {
+            for (int i = 0; i < 49; i++) {
+                String rugIdentifier = boardString.substring(i * 3, i * 3 + 3);
+                rugsIdentifier.add(rugIdentifier);
             }
         }
     }
 
-    public Board(String boardString) {
-        if (boardString.charAt(0) == 'B' && boardString.length() == 147) {
 
-        }
-    }
-
-    /**
-     * A setter method, hope this work.
-     */
-    public void setRug(int x, int y, String rugString) {
-        board[x][y] = rugString;
+    public List<String> getRugsIdentifier() {
+        return new ArrayList<>(rugsIdentifier);
     }
 }
 
