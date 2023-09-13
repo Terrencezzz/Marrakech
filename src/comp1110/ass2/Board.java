@@ -14,6 +14,12 @@ public class Board {
         }
     }
 
+    public Board(String boardString) {
+        if (boardString.charAt(0) == 'B' && boardString.length() == 147) {
+
+        }
+    }
+
     /**
      * A setter method, hope this work.
      */

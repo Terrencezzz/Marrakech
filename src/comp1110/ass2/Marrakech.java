@@ -48,14 +48,10 @@ public class Marrakech {
             }
         }
 
-        String boardRugs = gameString.substring(gameString.indexOf('B') + 1, gameString.indexOf('B') + 1 + (3 * 49));
+        String boardRugs = gameString.substring(gameString.indexOf('B') + 1);
 
         String rugIdentifier = rug.substring(0, 3);
-        if (boardRugs.contains(rugIdentifier)) {
-            return false;
-        }
-
-        return true;
+        return !boardRugs.contains(rugIdentifier);
     }
 
 

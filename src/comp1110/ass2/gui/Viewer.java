@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
 public class Viewer extends Application {
@@ -27,7 +28,21 @@ public class Viewer extends Application {
      * @param state an array of two strings, representing the current game state
      */
     void displayState(String state) {
-        // FIXME Task 5: implement the simple state viewer
+        String boardRug = state.substring(state.indexOf('B') + 1);
+        String assam = state.substring(state.indexOf('A') + 1, state.indexOf('B'));
+        String players = state.substring(state.indexOf(0),state.indexOf('A'));
+
+
+    }
+
+
+    protected static class Square extends Polygon{
+        Square(double x, double y, double side){
+            double shift =  side / 2;
+            this.getPoints().addAll(x - shift,y - shift,x - shift, -y + shift,-x + shift,y - shift,-x + shift,-y + shift);
+            setLayoutX(x);
+            setLayoutY(y);
+        }
     }
 
     /**
