@@ -68,14 +68,24 @@ public class Viewer extends Application {
         int col = assamPosition.getCol();
         int row = assamPosition.getRow();
 
-        double assamX = 140 + row * (side + 11);
-        double assamY = 240 + col * (side + 62);
 
-        Image assamImage = new Image("assam.png");
+        URL assamImageUrl = getClass().getResource("assam.png");
+        if (assamImageUrl == null) {
+            System.out.println("Failed to load Assam image.");
+            System.exit(0);
+        }
+        Image assamImage = new Image(assamImageUrl.toString());
         ImageView imageView = new ImageView(assamImage);
+        imageView.setFitWidth(60);
+        imageView.setFitHeight(60);
+        imageView.setPreserveRatio(true);
 
-        imageView.setX(assamX - assamImage.getWidth() / 2);
-        imageView.setY(assamY - assamImage.getHeight() / 2);
+
+        double assamX = 222 + col * 122;
+        double assamY = 110 + row * 71;
+
+        imageView.setX(assamX);
+        imageView.setY(assamY);
 
         root.getChildren().add(imageView);
     }
