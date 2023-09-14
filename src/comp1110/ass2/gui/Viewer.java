@@ -37,6 +37,7 @@ public class Viewer extends Application {
      */
     void displayState(String state) {
 
+        //These are for the squares
         GameStatus gameString = new GameStatus(state);
         Board board = gameString.getBoard();
         List<Colour> rugColorList = board.getColourList(state);
@@ -62,24 +63,21 @@ public class Viewer extends Application {
         root.getChildren().addAll(squares);
 
 
+
+
+        //These are for assam.png
         Assam assam = gameString.getAssam();
         IntPair assamPosition = assam.getPosition();
         Direction assamDirection = assam.getDirection();
         int col = assamPosition.getCol();
         int row = assamPosition.getRow();
 
-
         URL assamImageUrl = getClass().getResource("assam.png");
-        if (assamImageUrl == null) {
-            System.out.println("Failed to load Assam image.");
-            System.exit(0);
-        }
         Image assamImage = new Image(assamImageUrl.toString());
         ImageView imageView = new ImageView(assamImage);
         imageView.setFitWidth(60);
         imageView.setFitHeight(60);
         imageView.setPreserveRatio(true);
-
 
         double assamX = 222 + col * 122;
         double assamY = 110 + row * 71;
@@ -90,6 +88,10 @@ public class Viewer extends Application {
         imageView.setRotate(rotationAngle);
 
         root.getChildren().add(imageView);
+
+
+        //These are for the players' information
+
     }
 
     private static class Square extends Polygon{
@@ -134,10 +136,6 @@ public class Viewer extends Application {
         Scene scene = new Scene(root, VIEWER_WIDTH, VIEWER_HEIGHT);
 
         URL imageUrl = getClass().getResource("BoardImage.png");
-        if (imageUrl == null) {
-            System.out.println("Failed to load background image.");
-            System.exit(0);
-        }
         Image backgroundImage = new Image(imageUrl.toString());
         ImageView backgroundImageView = new ImageView(backgroundImage);
 
