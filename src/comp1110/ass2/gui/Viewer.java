@@ -64,29 +64,6 @@ public class Viewer extends Application {
 
 
 
-        //These are for assam.png
-        Assam assam = gameString.getAssam();
-        IntPair assamPosition = assam.getPosition();
-        Direction assamDirection = assam.getDirection();
-        int col = assamPosition.getCol();
-        int row = assamPosition.getRow();
-
-        URL assamImageUrl = getClass().getResource("assam.png");
-        Image assamImage = new Image(assamImageUrl.toString());
-        ImageView imageView = new ImageView(assamImage);
-        imageView.setFitWidth(60);
-        imageView.setFitHeight(60);
-        imageView.setPreserveRatio(true);
-
-        double assamX = 222 + col * 122;
-        double assamY = 110 + row * 71;
-        imageView.setX(assamX);
-        imageView.setY(assamY);
-
-        double rotationAngle = Rotation.applyRotation(assamDirection);
-        imageView.setRotate(rotationAngle);
-
-        root.getChildren().add(imageView);
 
 
 
