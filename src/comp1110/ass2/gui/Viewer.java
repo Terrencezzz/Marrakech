@@ -83,9 +83,22 @@ public class Viewer extends Application {
 
         double assamX = 222 + col * 122;
         double assamY = 110 + row * 71;
-
         imageView.setX(assamX);
         imageView.setY(assamY);
+
+        double rotationAngle = 0; // default, for example
+        switch(assamDirection) {
+            case NORTH ->
+                rotationAngle = 0;
+            case EAST ->
+                rotationAngle = 90;
+
+            case SOUTH ->
+                rotationAngle = 180;
+            case WEST ->
+                rotationAngle = 270;
+        }
+        imageView.setRotate(rotationAngle);
 
         root.getChildren().add(imageView);
     }
