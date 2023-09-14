@@ -15,7 +15,7 @@ public class GameStatus {
         this.board = board;
     }
 
-    GameStatus(String gameString) {
+    public GameStatus(String gameString) {
         this.gameString = gameString;
         int indexOfA = gameString.indexOf('A');
         int indexOfB = gameString.indexOf('B');

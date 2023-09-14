@@ -1,5 +1,6 @@
 package comp1110.ass2.gui;
 
+import comp1110.ass2.GameStatus;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,7 +29,14 @@ public class Viewer extends Application {
      * @param state an array of two strings, representing the current game state
      */
     void displayState(String state) {
-        // FIXME Task 5: implement the simple state viewer
+        GameStatus status = new GameStatus(state);
+    }
+
+    private static class Square extends Polygon{
+        Square(double x, double y, double side){
+            double shift = side / 2;
+            this.getPoints().addAll(shift);
+        }
     }
 
     /**

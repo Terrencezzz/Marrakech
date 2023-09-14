@@ -11,9 +11,9 @@ public class IntPair{
     private int col;
     private int row;
 
-    public IntPair(int x, int y) {
-        this.col = x;
-        this.row = y;
+    public IntPair(int row, int col) {
+        this.col = col;
+        this.row = row;
     }
 
 

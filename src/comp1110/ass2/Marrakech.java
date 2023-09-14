@@ -35,7 +35,7 @@ public class Marrakech {
         else if (rugObj.getId() < 0 || rugObj.getId() > 99) {
             return false;
         }
-        else if (rugObj.isPlaceNotValid()) {
+        else if (!rugObj.isPlaceValid()) {
             return false;
         }
         else {

@@ -1,18 +1,18 @@
 package comp1110.ass2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rug {
     private Colour colour;
     private int id;
-    private int col1, row1, col2, row2;
+    private List<IntPair> rugTiles;
 
 
-    Rug(Colour colour, int id, int x1, int y1, int x2, int y2) {
+    Rug(Colour colour, int id, List<IntPair> rugTiles) {
         this.colour = colour;
         this.id = id;
-        this.col1 = x1;
-        this.row1 = y1;
-        this.col2 = x2;
-        this.row2 = y2;
+        this.rugTiles = rugTiles;
     }
 
     /**
@@ -22,10 +22,15 @@ public class Rug {
         if (rugString.length() == 7) {
             this.colour = Colour.charToColour(rugString.charAt(0));
             this.id = Integer.parseInt(rugString.substring(1, 3));
-            this.col1 = Character.getNumericValue(rugString.charAt(3));
-            this.row1 = Character.getNumericValue(rugString.charAt(4));
-            this.col2 = Character.getNumericValue(rugString.charAt(5));
-            this.row2 = Character.getNumericValue(rugString.charAt(6));
+            this.rugTiles = new ArrayList<>();
+            int col1 = Character.getNumericValue(rugString.charAt(3));
+            int row1 = Character.getNumericValue(rugString.charAt(4));
+            int col2 = Character.getNumericValue(rugString.charAt(5));
+            int row2 = Character.getNumericValue(rugString.charAt(6));
+            IntPair rugTile1 = new IntPair(row1,col1);
+            IntPair rugTile2 = new IntPair(row2,col2);
+            rugTiles.add(rugTile1);
+            rugTiles.add(rugTile2);
         }
     }
 
@@ -42,18 +47,13 @@ public class Rug {
     }
 
 
-    public boolean isPlaceNotValid() {
-        return (col1 < 0 || col1 > 6 || row1 < 0 || row1 > 6
-                || col2 < 0 || col2 > 6 || row2 < 0 || row2 > 6);
-    }
-
-    @Override
-    public String toString() {
-        return Colour.colourToChar(colour)
-                + String.format("%02d", id)
-                + col1
-                + row1
-                + col2
-                + row2;
+    public boolean isPlaceValid() {
+        for (IntPair rugTile : rugTiles) {
+            if (!(rugTile.getCol() >= 0 && rugTile.getCol() <= 6
+                    && rugTile.getRow() >= 0 && rugTile.getRow() <= 6)){
+                return false;
+            }
+        }
+        return true;
     }
 }
