@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameStatus {
-    private Player player;
+    private List<Player> players;
     private Assam assam;
     private Board board;
     private String gameString;
 
-    GameStatus (Player player, Assam assam, Board board){
-        this.player = player;
+    GameStatus (List<Player> players, Assam assam, Board board){
+        this.players = players;
         this.assam = assam;
         this.board = board;
     }
@@ -21,11 +21,16 @@ public class GameStatus {
         int indexOfB = gameString.indexOf('B');
 
         if (indexOfA != -1 && indexOfB != -1 && gameString.length() >= 183) {
-            String playerString = gameString.substring(0, indexOfA);
+            String playerStrings = gameString.substring(0, indexOfA);
             String assamString = gameString.substring(indexOfA, indexOfA + 4);
             String boardPosition = gameString.substring(indexOfB+1);
 
-            this.player = new Player(playerString);
+            this.players = new ArrayList<>();
+            for (int i = 0; i < indexOfA; i += 8) {
+                String individualPlayerString = playerStrings.substring(i, i + 8);
+                Player player = new Player(individualPlayerString);
+                players.add(player);
+            }
             this.assam = new Assam(assamString);
             this.board = new Board(boardPosition);
         }
@@ -39,8 +44,8 @@ public class GameStatus {
         return assam;
     }
 
-    public Player getPlayer() {
-        return player;
+    public List<Player> getPlayers() {
+        return players;
     }
 
     public List<Colour> getActivePlayersColors() {

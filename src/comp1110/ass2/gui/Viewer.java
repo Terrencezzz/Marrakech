@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
@@ -64,7 +65,6 @@ public class Viewer extends Application {
 
 
 
-
         //These are for assam.png
         Assam assam = gameString.getAssam();
         IntPair assamPosition = assam.getPosition();
@@ -90,8 +90,37 @@ public class Viewer extends Application {
         root.getChildren().add(imageView);
 
 
-        //These are for the players' information
 
+        //These are for the players' information
+        List<Player> players = gameString.getPlayers();
+        HBox leftPlayerBox = new HBox(20);
+        HBox rightPlayerBox = new HBox(20);
+
+        for (int i = 0; i < players.size(); i++) {
+            Player p = players.get(i);
+            String playerData = "Color: " + p.getPlayerColour() +
+                    ", Dirhams: " + p.getDirhams() +
+                    ", Rugs: " + p.getRugNumber() +
+                    ", Status: " + p.getStatus();
+
+            Label playerLabel = new Label(playerData);
+            playerLabel.setStyle("-fx-background-color: white; -fx-padding: 5;");
+
+
+            if (i < 2) {
+                leftPlayerBox.getChildren().add(playerLabel);
+            } else {
+                rightPlayerBox.getChildren().add(playerLabel);
+            }
+        }
+
+        leftPlayerBox.setLayoutX(10);
+        leftPlayerBox.setLayoutY(10);
+
+        rightPlayerBox.setLayoutX(VIEWER_WIDTH - (VIEWER_WIDTH / 2.35));
+        rightPlayerBox.setLayoutY(10);
+
+        root.getChildren().addAll(leftPlayerBox, rightPlayerBox);
     }
 
     private static class Square extends Polygon{
