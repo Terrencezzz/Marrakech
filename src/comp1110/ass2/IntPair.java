@@ -11,7 +11,7 @@ public class IntPair{
     private int col;
     private int row;
 
-    public IntPair(int row, int col) {
+    public IntPair(int col, int row) {
         this.col = col;
         this.row = row;
     }

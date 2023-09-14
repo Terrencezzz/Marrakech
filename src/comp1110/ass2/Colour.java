@@ -1,10 +1,13 @@
 package comp1110.ass2;
 
+import javafx.scene.paint.Color;
+
 public enum Colour {
     YELLOW('y'),
     PURPLE('p'),
     CYAN('c'),
-    RED('r');
+    RED('r'),
+    WHITE('n');
 
     private final char c;
     Colour(char c) {
@@ -17,7 +20,7 @@ public enum Colour {
             case 'p' -> Colour.PURPLE;
             case 'c' -> Colour.CYAN;
             case 'r' -> Colour.RED;
-            default -> null;
+            default -> Colour.WHITE;
         };
     }
 
@@ -28,6 +31,17 @@ public enum Colour {
             case PURPLE -> 'p';
             case CYAN -> 'c';
             case RED -> 'r';
+            case WHITE -> 'n';
+        };
+    }
+
+    public static Color colourToJavaFXColor(Colour colour) {
+        return switch (colour) {
+            case YELLOW -> Color.YELLOW;
+            case PURPLE -> Color.PURPLE;
+            case CYAN   -> Color.CYAN;
+            case RED    -> Color.RED;
+            case WHITE  -> Color.WHITE;
         };
     }
 }
