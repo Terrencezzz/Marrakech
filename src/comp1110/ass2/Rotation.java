@@ -1,27 +1,26 @@
 package comp1110.ass2;
 
 public class Rotation {
-    private int rotation;
-    public Rotation(int rotation) {
-        this.rotation = rotation;
+    private Direction direction;
+    public Rotation(Direction direction) {
+        this.direction = direction;
     }
 
-    public Direction applyRotation(int angle) {
-        int newAngle = angle + (360 + this.rotation) % 360;
-        switch (newAngle) {
-            case 0 -> {
-                return Direction.NORTH;
+    public static int applyRotation(Direction direction) {
+        switch (direction) {
+            case NORTH -> {
+                return 0;
             }
-            case 90 -> {
-                return Direction.EAST;
+            case EAST -> {
+                return 90;
             }
-            case 180 -> {
-                return Direction.SOUTH;
+            case SOUTH -> {
+                return 180;
             }
-            case 270 -> {
-                return Direction.WEST;
+            case WEST -> {
+                return 270;
             }
         }
-        return null;
+        return 0;
     }
 }
