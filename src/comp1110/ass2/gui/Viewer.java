@@ -13,7 +13,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,27 +40,44 @@ public class Viewer extends Application {
         GameStatus gameString = new GameStatus(state);
         Board board = gameString.getBoard();
         List<Colour> rugColorList = board.getColourList(state);
-        double side = 50;
+        double side = 60;
 
         List<Square> squares = new ArrayList<>();
-        double x = 150;
-        double y = 150;
+        double x = 140;
+        double y = 240;
         for (int col = 0; col < 7; col++){
             for (int row = 0; row < 7; row++){
                 Square square = new Square(x,y,side);
                 Colour rugColour = rugColorList.get(col * 7 + row);
                 Color javaFXColor = Colour.colourToJavaFXColor(rugColour);
                 square.setFill(javaFXColor);
+                square.setStroke(Color.BLACK);
+                square.setStrokeWidth(2);
                 squares.add(square);
-                x += side;
+                x += side + 11;
             }
-            y += side;
-            x = 150;
+            y += side + 62;
+            x = 140;
         }
-
-
-
         root.getChildren().addAll(squares);
+
+
+        Assam assam = gameString.getAssam();
+        IntPair assamPosition = assam.getPosition();
+        Direction assamDirection = assam.getDirection();
+        int col = assamPosition.getCol();
+        int row = assamPosition.getRow();
+
+        double assamX = 140 + row * (side + 11);
+        double assamY = 240 + col * (side + 62);
+
+        Image assamImage = new Image("assam.png");
+        ImageView imageView = new ImageView(assamImage);
+
+        imageView.setX(assamX - assamImage.getWidth() / 2);
+        imageView.setY(assamY - assamImage.getHeight() / 2);
+
+        root.getChildren().add(imageView);
     }
 
     private static class Square extends Polygon{
@@ -75,7 +95,9 @@ public class Viewer extends Application {
     private void makeControls() {
         Label boardLabel = new Label("Game State:");
         boardTextField = new TextField();
-        boardTextField.setPrefWidth(800);
+        boardTextField.prefWidthProperty().bind(root.sceneProperty().get().widthProperty().subtract(250));
+
+
         Button button = new Button("Refresh");
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -89,6 +111,8 @@ public class Viewer extends Application {
         hb.setSpacing(10);
         hb.setLayoutX(50);
         hb.setLayoutY(VIEWER_HEIGHT - 50);
+
+
         controls.getChildren().add(hb);
     }
 
@@ -97,11 +121,24 @@ public class Viewer extends Application {
         primaryStage.setTitle("Marrakech Viewer");
         Scene scene = new Scene(root, VIEWER_WIDTH, VIEWER_HEIGHT);
 
-        root.getChildren().add(controls);
+        URL imageUrl = getClass().getResource("BoardImage.png");
+        if (imageUrl == null) {
+            System.out.println("Failed to load background image.");
+            System.exit(0);
+        }
+        Image backgroundImage = new Image(imageUrl.toString());
+        ImageView backgroundImageView = new ImageView(backgroundImage);
 
+        backgroundImageView.fitWidthProperty().bind(scene.widthProperty());
+        backgroundImageView.fitHeightProperty().bind(scene.heightProperty());
+
+        root.getChildren().add(backgroundImageView);
+
+        root.getChildren().add(controls);
         makeControls();
 
         primaryStage.setScene(scene);
+
         primaryStage.show();
     }
 }

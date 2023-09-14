@@ -14,11 +14,6 @@ public class Assam {
     /**
      * Initialize the status of Assam to position (3,3) and direction "Down".
      */
-    public Assam() {
-        this.position = new IntPair(3, 3);
-        this.direction = Direction.NORTH;
-    }
-
 
     public Assam(IntPair position, Direction direction) {
         this.position = position;

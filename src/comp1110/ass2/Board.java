@@ -28,13 +28,11 @@ public class Board {
     }
 
     public List<Colour> getColourList(String gameString) {
-        List<Colour> colourList = new ArrayList<>(  );
-        String boardString = gameString.substring(gameString.charAt('B') + 1);
-        for (int i = 0; i < 49; i ++) {
-            if (i % 3 == 0) {
-                Colour colour = Colour.charToColour(boardString.charAt(i));
-                colourList.add(colour);
-            }
+        List<Colour> colourList = new ArrayList<>();
+        String boardString = gameString.substring(gameString.indexOf('B') + 1);
+        for (int i = 0; i < boardString.length(); i += 3) {
+            Colour colour = Colour.charToColour(boardString.charAt(i));
+            colourList.add(colour);
         }
         return colourList;
     }

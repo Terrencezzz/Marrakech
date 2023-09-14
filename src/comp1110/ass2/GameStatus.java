@@ -22,7 +22,7 @@ public class GameStatus {
 
         if (indexOfA != -1 && indexOfB != -1 && gameString.length() >= 183) {
             String playerString = gameString.substring(0, indexOfA);
-            String assamString = gameString.substring(indexOfA+1, indexOfB);
+            String assamString = gameString.substring(indexOfA, indexOfA + 4);
             String boardPosition = gameString.substring(indexOfB+1);
 
             this.player = new Player(playerString);
