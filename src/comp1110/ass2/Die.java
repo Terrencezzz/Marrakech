@@ -7,7 +7,16 @@ import java.util.Random;
 public class Die {
     private final static int[] FACES = {1,2,2,3,3,4};
     private final static Random random = new Random();
+    private static Die instance = null;
 
+    private Die(){}
+    
+       public static Die getInstance(){
+        if (instance == null) {
+            instance = new Die();
+        }
+        return instance;
+    }
 
     /**
      * To get a random number from this die.
