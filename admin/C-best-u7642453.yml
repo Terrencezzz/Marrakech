@@ -16,14 +16,14 @@ declaration: >-
 # I wish to submit the following classes as entirely my own (remove this if
 # you want to just submit methods):
 class:
-   - Board
-   - Rest of the classes
+  - Board
+  - Rest of the classes
 
 # I wish to submit the following methods as entirely my own (remove this if
 # you want to just submit classes):
 method:
-   - isRugValid
-   - displayState
+  - isRugValid
+  - displayState
 
 # sign *your* name and uid here
 name: WanZhong Wu
