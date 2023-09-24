@@ -15,6 +15,7 @@ import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -41,11 +42,11 @@ public class Viewer extends Application {
         GameStatus gameString = new GameStatus(state);
         Board board = gameString.getBoard();
         List<Colour> rugColorList = board.getColourList(state);
-        double side = 60;
+        double side = 80;
 
         List<Square> squares = new ArrayList<>();
-        double x = 140;
-        double y = 240;
+        double x = 110;
+        double y = 360;
         for (int col = 0; col < 7; col++){
             for (int row = 0; row < 7; row++){
                 Square square = new Square(x,y,side);
@@ -57,10 +58,10 @@ public class Viewer extends Application {
                     square.setStrokeWidth(2);
                     squares.add(square);
                 }
-                x += side + 11;
+                x += side;
             }
-            y += side + 62;
-            x = 140;
+            y += side;
+            x = 110;
         }
         root.getChildren().addAll(squares);
 
@@ -76,12 +77,12 @@ public class Viewer extends Application {
         URL assamImageUrl = getClass().getResource("assam.png");
         Image assamImage = new Image(assamImageUrl.toString());
         ImageView imageView = new ImageView(assamImage);
-        imageView.setFitWidth(60);
-        imageView.setFitHeight(60);
+        imageView.setFitWidth(80);
+        imageView.setFitHeight(80);
         imageView.setPreserveRatio(true);
 
-        double assamX = 222 + col * 122;
-        double assamY = 110 + row * 71;
+        double assamX = 335 + col * 80;
+        double assamY = 70 + row * 80;
         imageView.setX(assamX);
         imageView.setY(assamY);
 
@@ -99,13 +100,17 @@ public class Viewer extends Application {
 
         for (int i = 0; i < players.size(); i++) {
             Player p = players.get(i);
-            String playerData = "Color: " + p.getPlayerColour() +
-                    ", Dirhams: " + p.getDirhams() +
-                    ", Rugs: " + p.getRugNumber() +
-                    ", Status: " + p.getStatus();
+            String playerData = "Color: " + p.getPlayerColour() + "\n" +
+                    "Dirhams: " + p.getDirhams() + "\n" +
+                    "Rugs: " + p.getRugNumber() + "\n" +
+                    "Status: " + p.getStatus();
 
             Label playerLabel = new Label(playerData);
-            playerLabel.setStyle("-fx-background-color: white; -fx-padding: 5;");
+            playerLabel.setStyle("-fx-background-color: rgba(255,255,255,0.7); " +
+                    "-fx-padding: 10; " +
+                    "-fx-border-width: 2; " +
+                    "-fx-border-color: black; " +
+                    "-fx-font-size: 14px;");
 
 
             if (i < 2) {
@@ -118,7 +123,7 @@ public class Viewer extends Application {
         leftPlayerBox.setLayoutX(10);
         leftPlayerBox.setLayoutY(10);
 
-        rightPlayerBox.setLayoutX(VIEWER_WIDTH - (VIEWER_WIDTH / 2.35));
+        rightPlayerBox.setLayoutX(VIEWER_WIDTH - 240);
         rightPlayerBox.setLayoutY(10);
 
         root.getChildren().addAll(leftPlayerBox, rightPlayerBox);
@@ -165,17 +170,14 @@ public class Viewer extends Application {
         primaryStage.setTitle("Marrakech Viewer");
         Scene scene = new Scene(root, VIEWER_WIDTH, VIEWER_HEIGHT);
 
-        URL imageUrl = getClass().getResource("BoardImage.png");
-        Image backgroundImage = null;
-        if (imageUrl != null) {
-            backgroundImage = new Image(imageUrl.toString());
-        }
-        ImageView backgroundImageView = new ImageView(backgroundImage);
+        Rectangle greyBoard = new Rectangle();
+        greyBoard.setWidth(560);
+        greyBoard.setHeight(560);
+        greyBoard.setFill(Color.GRAY);
+        greyBoard.setX((double) (VIEWER_WIDTH - 560) / 2);   // Centers the rectangle on the X axis
+        greyBoard.setY((double) (VIEWER_HEIGHT - 560) / 2);  // Centers the rectangle on the Y axis
 
-        backgroundImageView.fitWidthProperty().bind(scene.widthProperty());
-        backgroundImageView.fitHeightProperty().bind(scene.heightProperty());
-
-        root.getChildren().add(backgroundImageView);
+        root.getChildren().add(greyBoard);
 
         root.getChildren().add(controls);
         makeControls();
