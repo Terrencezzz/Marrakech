@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -170,12 +171,44 @@ public class Viewer extends Application {
         primaryStage.setTitle("Marrakech Viewer");
         Scene scene = new Scene(root, VIEWER_WIDTH, VIEWER_HEIGHT);
 
+        int centerX1 = 400;
+        int centerY1 = 70;
+        int centerX2 = 320;
+        int centerY2 = 630;
+        int centerX3 = 880;
+        int radius = 60;
+
+        for (int i = 0; i < 4; i++) {
+            Circle circle = new Circle(centerX1 + i * 160, centerY1, radius);
+            circle.setFill(Color.BLUE);
+            root.getChildren().add(circle);
+        }
+
+        for (int i = 0; i < 4; i++) {
+            Circle circle = new Circle(centerX2 + i * 160, centerY2, radius);
+            circle.setFill(Color.BLUE);
+            root.getChildren().add(circle);
+        }
+
+        for (int i = 1; i < 4; i++) {
+            Circle circle = new Circle(centerX2, centerY2 - i * 160, radius);
+            circle.setFill(Color.BLUE);
+            root.getChildren().add(circle);
+        }
+
+        for (int i = 1; i < 4; i++) {
+            Circle circle = new Circle(centerX3, centerY1 + i * 160, radius);
+            circle.setFill(Color.BLUE);
+            root.getChildren().add(circle);
+        }
+
+
         Rectangle greyBoard = new Rectangle();
         greyBoard.setWidth(560);
         greyBoard.setHeight(560);
         greyBoard.setFill(Color.GRAY);
-        greyBoard.setX((double) (VIEWER_WIDTH - 560) / 2);   // Centers the rectangle on the X axis
-        greyBoard.setY((double) (VIEWER_HEIGHT - 560) / 2);  // Centers the rectangle on the Y axis
+        greyBoard.setX((double) (VIEWER_WIDTH - 560) / 2);
+        greyBoard.setY((double) (VIEWER_HEIGHT - 560) / 2);
 
         root.getChildren().add(greyBoard);
 
