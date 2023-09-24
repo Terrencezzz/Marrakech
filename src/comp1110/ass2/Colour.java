@@ -20,7 +20,7 @@ public enum Colour {
             case 'p' -> Colour.PURPLE;
             case 'c' -> Colour.CYAN;
             case 'r' -> Colour.RED;
-            default -> Colour.GREY;
+            default -> null;
         };
     }
 
@@ -31,7 +31,7 @@ public enum Colour {
             case PURPLE -> 'p';
             case CYAN -> 'c';
             case RED -> 'r';
-            case GREY -> 'n';
+            default-> 'n';
         };
     }
 
@@ -41,7 +41,7 @@ public enum Colour {
             case PURPLE -> Color.PURPLE;
             case CYAN   -> Color.CYAN;
             case RED    -> Color.RED;
-            case GREY -> Color.GREY;
+            case GREY -> null;
         };
     }
 }

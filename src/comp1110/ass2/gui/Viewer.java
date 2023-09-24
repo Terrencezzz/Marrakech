@@ -50,11 +50,13 @@ public class Viewer extends Application {
             for (int row = 0; row < 7; row++){
                 Square square = new Square(x,y,side);
                 Colour rugColour = rugColorList.get(col * 7 + row);
-                Color javaFXColor = Colour.colourToJavaFXColor(rugColour);
-                square.setFill(javaFXColor);
-                square.setStroke(Color.BLACK);
-                square.setStrokeWidth(2);
-                squares.add(square);
+                if (rugColour != null) {
+                    Color javaFXColor = Colour.colourToJavaFXColor(rugColour);
+                    square.setFill(javaFXColor);
+                    square.setStroke(Color.BLACK);
+                    square.setStrokeWidth(2);
+                    squares.add(square);
+                }
                 x += side + 11;
             }
             y += side + 62;
