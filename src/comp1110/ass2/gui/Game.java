@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class Game extends Application {
 
