@@ -24,91 +24,91 @@ public class Move {
     public Assam applyTransform(Assam assamString) {
         Direction direction = assamString.getDirection();
         IntPair position = assamString.getPosition();
-        int col = position.getCol();
-        int row = position.getRow();
+        int x = position.getCol();
+        int y = position.getRow();
         switch (direction) {
             case NORTH -> {
-                if (col - movement < 0) {
-                    if (row == 6) {
+                if (y - movement < 0) {
+                    if (x == 6) {
                         direction = Direction.WEST;
-                        col = 0;
-                        row -= (movement - col - 1);
-                    } else if (row % 2 == 0) {
+                        y = 0;
+                        x -= (movement - y - 1);
+                    } else if (x % 2 == 0) {
                         direction = Direction.SOUTH;
-                        col = movement - col - 1;
-                        row += 1;
+                        y = movement - y - 1;
+                        x += 1;
                     } else {
                         direction = Direction.SOUTH;
-                        col = movement - col - 1;
-                        row -= 1;
+                        y = movement - y - 1;
+                        x -= 1;
                     }
                 } else {
-                    col -= movement;
+                    y -= movement;
                 }
             }
             case EAST -> {
-                if (row + movement > 6) {
-                    if (col == 0) {
+                if (x + movement > 6) {
+                    if (y == 0) {
                         direction = Direction.SOUTH;
-                        col = (6 - movement - 1);
-                        row = 6;
-                    } else if (col % 2 == 0) {
+                        y = (6 - movement - 1);
+                        x = 6;
+                    } else if (y % 2 == 0) {
                         direction = Direction.WEST;
-                        col -= 1;
-                        row = 13 - movement - row;
+                        y -= 1;
+                        x = 13 - movement - x;
                     } else {
                         direction = Direction.WEST;
-                        col += 1;
-                        row = 13 - movement - row;
+                        y += 1;
+                        x = 13 - movement - x;
 
                     }
                 } else {
-                    row += movement;
+                    x += movement;
                 }
             }
             case SOUTH -> {
-                if (col + movement > 6) {
-                    if (row == 0) {
+                if (y + movement > 6) {
+                    if (x == 0) {
                         direction = Direction.EAST;
-                        row = movement + col - 7;
-                        col = 6;
-                    } else if (col % 2 == 0) {
+                        x = movement + y - 7;
+                        y = 6;
+                    } else if (x % 2 == 0) {
                         direction = Direction.NORTH;
-                        row -= 1;
-                        col = 13 - movement - col;
+                        x -= 1;
+                        y = 13 - movement - y;
                     } else {
                         direction = Direction.NORTH;
-                        row += 1;
-                        col = 13 - movement - col;
+                        x += 1;
+                        y = 13 - movement - y;
                     }
                 } else {
-                    col += movement;
+                    y += movement;
                 }
             }
             case WEST -> {
-                if (row - movement < 0) {
-                    if (col == 6) {
+                if (x - movement < 0) {
+                    if (y == 6) {
                         direction = Direction.NORTH;
-                        col = 7 + row - movement;
-                        row = 0;
-                    } else if (col % 2 == 0) {
+                        y = 7 + x - movement;
+                        x = 0;
+                    } else if (y % 2 == 0) {
                         direction = Direction.EAST;
-                        col += 1;
-                        row = movement - row - 1;
+                        y += 1;
+                        x = movement - x - 1;
                     } else {
                         direction = Direction.EAST;
-                        col -= 1;
-                        row = movement - row - 1;
+                        y -= 1;
+                        x = movement - x - 1;
                     }
                 } else {
-                    row -= movement;
+                    x -= movement;
                 }
             }
             default -> {
                 return assamString;
             }
         }
-        return new Assam(new IntPair(col, row), direction);
+        return new Assam(new IntPair(y, x), direction);
     }
 
 

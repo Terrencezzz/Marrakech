@@ -6,19 +6,19 @@ package comp1110.ass2;
  */
 public class IntPair{
     /**
-     * Constructor for IntPair, aims to combine getX and y to (getX , y)
+     * Constructor for IntPair, aims to combine col and row to (col , row)
      */
     private int col;
     private int row;
 
-    public IntPair(int col, int row) {
+    public IntPair(int row, int col) {
         this.col = col;
         this.row = row;
     }
 
 
     /**
-     * This is a getter method for getX, if you want to use getX, then use getX().
+     * This is a getter method for col, if you want to use col, then use getCol().
      *
      * @return The getX-coordinate of the IntPair.
      */
@@ -28,7 +28,7 @@ public class IntPair{
 
 
     /**
-     * This is a getter method for y, if you want to use y, then use getY().
+     * This is a getter method for row, if you want to use row, then use getRow().
      *
      * @return The y-coordinate of the IntPair.
      */

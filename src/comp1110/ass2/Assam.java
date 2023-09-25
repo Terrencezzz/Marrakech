@@ -23,9 +23,9 @@ public class Assam {
 
     public Assam(String assamString) {
         if (assamString.charAt(0) == 'A') {
-            int x = Integer.parseInt(String.valueOf(assamString.charAt(1)));
-            int y = Integer.parseInt(String.valueOf(assamString.charAt(2)));
-            this.position = new IntPair(x, y);
+            int col = Integer.parseInt(String.valueOf(assamString.charAt(1)));
+            int row = Integer.parseInt(String.valueOf(assamString.charAt(2)));
+            this.position = new IntPair(row, col);
             this.direction = Direction.charToDirection(assamString.charAt(3));
         }
     }
@@ -49,9 +49,11 @@ public class Assam {
     public Direction getDirection() {
         return direction;
     }
+
+
+    @Override
+    public String toString() {
+        return "A" + position.getCol() + position.getRow() + Direction.directionToChar(direction);
+    }
+
 }
-
-
-
-
-
