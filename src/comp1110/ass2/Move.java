@@ -31,8 +31,8 @@ public class Move {
                 if (y - movement < 0) {
                     if (x == 6) {
                         direction = Direction.WEST;
+                        x = 6 - (movement - y - 1);
                         y = 0;
-                        x -= (movement - y - 1);
                     } else if (x % 2 == 0) {
                         direction = Direction.SOUTH;
                         y = movement - y - 1;
@@ -50,7 +50,7 @@ public class Move {
                 if (x + movement > 6) {
                     if (y == 0) {
                         direction = Direction.SOUTH;
-                        y = (6 - movement - 1);
+                        y = movement - 1 - (6 - x);
                         x = 6;
                     } else if (y % 2 == 0) {
                         direction = Direction.WEST;

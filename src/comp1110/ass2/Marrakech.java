@@ -156,8 +156,9 @@ public class Marrakech {
      * @return A String representing Assam's state after the movement.
      */
     public static String moveAssam(String currentAssam, int dieResult){
-        // FIXME: Task 13
-        return "";
+        Assam assam = new Assam(currentAssam);
+        Move movement = new Move(dieResult);
+        return movement.applyTransform(assam).toString();
     }
 
     /**
