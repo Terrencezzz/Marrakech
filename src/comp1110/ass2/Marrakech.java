@@ -29,7 +29,7 @@ public class Marrakech {
         if (rug.length() != 7) {
             return false;
         }
-        else if (!gameStatus.getActivePlayersColors().contains(rugObj.getColour())) {
+        else if (!gameStatus.getPlayersColors().contains(rugObj.getColour())) {
             return false;
         }
         else if (rugObj.getId() < 0 || rugObj.getId() > 99) {

@@ -9,12 +9,6 @@ public class GameStatus {
     private Board board;
     private String gameString;
 
-    GameStatus (List<Player> players, Assam assam, Board board){
-        this.players = players;
-        this.assam = assam;
-        this.board = board;
-    }
-
     public GameStatus(String gameString) {
         this.gameString = gameString;
         int indexOfA = gameString.indexOf('A');
@@ -48,7 +42,7 @@ public class GameStatus {
         return players;
     }
 
-    public List<Colour> getActivePlayersColors() {
+    public List<Colour> getPlayersColors() {
         List<Colour> activeColors = new ArrayList<>();
         int playerStringLength = 8;
         int numPlayers = (gameString.indexOf('A')) / playerStringLength;
