@@ -87,7 +87,7 @@ public class Viewer extends Application {
         imageView.setX(assamX);
         imageView.setY(assamY);
 
-        double rotationAngle = Rotation.applyRotation(assamDirection);
+        double rotationAngle = Rotation.directionToInt(assamDirection);
         imageView.setRotate(rotationAngle);
 
         root.getChildren().add(imageView);
