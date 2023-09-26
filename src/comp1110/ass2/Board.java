@@ -27,7 +27,7 @@ public class Board {
         return new ArrayList<>(rugsIdentifier);
     }
 
-    public List<Colour> getColourList(String gameString) {
+    public static List<Colour> getColourList(String gameString) {
         List<Colour> colourList = new ArrayList<>();
         String boardString = gameString.substring(gameString.indexOf('B') + 1);
         for (int i = 0; i < boardString.length(); i += 3) {

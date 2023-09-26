@@ -42,7 +42,7 @@ public class Viewer extends Application {
         //These are for the squares
         GameStatus gameString = new GameStatus(state);
         Board board = gameString.getBoard();
-        List<Colour> rugColorList = board.getColourList(state);
+        List<Colour> rugColorList = Board.getColourList(state);
         double side = 80;
 
         List<Square> squares = new ArrayList<>();
