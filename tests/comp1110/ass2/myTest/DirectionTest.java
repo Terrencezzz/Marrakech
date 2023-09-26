@@ -21,7 +21,8 @@ public class DirectionTest {
     }
 
 
-    void directionToChar() {
+    @Test
+    void directionToCharTest() {
         Direction direction1 = Direction.NORTH;
         Direction direction2 = Direction.EAST;
         Direction direction3 = Direction.SOUTH;
