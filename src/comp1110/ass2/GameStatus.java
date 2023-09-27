@@ -69,4 +69,37 @@ public class GameStatus {
         }
         return count == inGame;
     }
+
+    public static char getTheWinner(List<Player> players, List<Colour> colourList) {
+
+        List<Character> winners = new ArrayList<>();
+        int highestScore = 0;
+
+        for (Player player : players) {
+            int count = 0;
+            Colour playerColour = player.getPlayerColour();
+            for (Colour colour : colourList) {
+                if (colour == playerColour) {
+                    count += 1;
+                }
+            }
+            int marks = player.getDirhams() + count;
+
+            if (marks > highestScore && player.getStatus() != 'o') {
+                highestScore = marks;
+                winners.clear();
+                winners.add(Colour.colourToChar(playerColour));
+            } else if (marks == highestScore && player.getStatus() != 'o') {
+                winners.add(Colour.colourToChar(playerColour));
+            }
+        }
+
+        if (winners.size() > 1) {
+            return 't';
+        }
+        else {
+            return winners.get(0);
+        }
+    }
+
 }

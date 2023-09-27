@@ -52,7 +52,7 @@ public class Viewer extends Application {
             for (int row = 0; row < 7; row++){
                 Square square = new Square(x,y,side);
                 Colour rugColour = rugColorList.get(col * 7 + row);
-                if (rugColour != null) {
+                if (rugColour != Colour.GREY) {
                     Color javaFXColor = Colour.colourToJavaFXColor(rugColour);
                     square.setFill(javaFXColor);
                     square.setStroke(Color.BLACK);

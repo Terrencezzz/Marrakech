@@ -150,8 +150,16 @@ public class Marrakech {
      * @return A char representing the winner of the game as described above.
      */
     public static char getWinner(String gameState) {
-        // FIXME: Task 12
-        return '\0';
+        GameStatus game = new GameStatus(gameState);
+        List<Player> players = game.getPlayers();
+        List<Colour> colourList = Board.getColourList(gameState);
+
+        if (!isGameOver(gameState)) {
+            return 'n';
+        }
+        else {
+            return GameStatus.getTheWinner(players, colourList);
+        }
     }
 
     /**
