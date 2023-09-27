@@ -53,4 +53,20 @@ public class GameStatus {
         }
         return activeColors;
     }
+
+    public static boolean isRugRunOut(List<Player> players) {
+        int inGame = 4;
+        int count = 0;
+        for (Player player : players) {
+            int rugNum = player.getRugNumber();
+            char status = player.getStatus();
+            if (status == 'o') {
+                inGame -= 1;
+            }
+            else if (rugNum == 0 && status == 'i') {
+                count += 1;
+            }
+        }
+        return count == inGame;
+    }
 }

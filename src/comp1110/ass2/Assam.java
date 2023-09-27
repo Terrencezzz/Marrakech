@@ -59,7 +59,7 @@ public class Assam {
         int col = assam.getPosition().getCol();
 
         for (int i = -1; i <= 1; i++) {
-            if (col + i >= 0 && col + i <= 6) {
+            if (col + i >= 0 && col + i <= 6 && i != 0) {
                 IntPair newPosition = new IntPair(row, col + i);
                 positions.add(newPosition);
             }
