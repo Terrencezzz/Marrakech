@@ -42,6 +42,8 @@ public class Rug {
         return colour;
     }
 
+    public List<IntPair> getRugTiles() { return rugTiles; }
+
     public String getIdentifier() {
         return Colour.colourToChar(colour) + Integer.toString(id);
     }
@@ -57,3 +59,4 @@ public class Rug {
         return true;
     }
 }
+

@@ -1,5 +1,7 @@
 package comp1110.ass2;
 
+import java.util.List;
+
 public class Marrakech {
 
     /**
@@ -106,8 +108,15 @@ public class Marrakech {
      * @return true if the placement is valid, and false otherwise.
      */
     public static boolean isPlacementValid(String gameState, String rug) {
-        // FIXME: Task 10
-        return false;
+        GameStatus game = new GameStatus(gameState);
+        Rug r = new Rug(rug);
+        Assam assam = game.getAssam();
+        List<IntPair> rugTiles = r.getRugTiles();
+
+        if (!Assam.besidePositions(assam).contains(rugTiles.get(0)) && !Assam.besidePositions(assam).contains(rugTiles.get(1))) {
+            return false;
+        }
+        else return !Board.totallyOverlap(gameState, r);
     }
 
     /**

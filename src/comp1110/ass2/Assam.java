@@ -1,6 +1,9 @@
 package comp1110.ass2;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This class aims to record the status of Assam.
  */
@@ -50,10 +53,30 @@ public class Assam {
         return direction;
     }
 
+    public static List<IntPair> besidePositions(Assam assam) {
+        List<IntPair> positions = new ArrayList<>();
+        int row = assam.getPosition().getRow();
+        int col = assam.getPosition().getCol();
+
+        for (int i = -1; i <= 1; i++) {
+            if (col + i >= 0 && col + i <= 6) {
+                IntPair newPosition = new IntPair(row, col + i);
+                positions.add(newPosition);
+            }
+        }
+
+        for (int i = -1; i <= 1; i++) {
+            if (row + i >= 0 && row + i <= 6) {
+                IntPair newPosition = new IntPair(row + i, col);
+                positions.add(newPosition);
+            }
+        }
+        return positions;
+    }
+
 
     @Override
     public String toString() {
         return "A" + position.getCol() + position.getRow() + Direction.directionToChar(direction);
     }
-
 }

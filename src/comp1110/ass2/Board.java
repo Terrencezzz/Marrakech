@@ -1,6 +1,5 @@
 package comp1110.ass2;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,5 +35,29 @@ public class Board {
         }
         return colourList;
     }
+
+    public static boolean totallyOverlap(String gameString, Rug rug) {
+        String idList = gameString.substring(gameString.indexOf('B') + 1);
+        IntPair tile1 = rug.getRugTiles().get(0);
+        IntPair tile2 = rug.getRugTiles().get(1);
+        int row1 = tile1.getRow();
+        int row2 = tile2.getRow();
+        int col1 = tile1.getCol();
+        int col2 = tile2.getCol();
+
+        int index1 = col1 * ROWS + row1;
+        int index2 = col2 * ROWS + row2;
+
+        String id1 = idList.substring(3 * index1, 3 * index1 + 3);
+        String id2 = idList.substring(3 * index2, 3 * index2 + 3);
+
+        if (id1.equals("n00") && id2.equals("n00")) {
+            return false;
+        }
+        else {
+            return id1.equals(id2);
+        }
+    }
 }
+
 
