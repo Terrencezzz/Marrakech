@@ -1,7 +1,12 @@
 
 # Test plan
-
+1.Enum type Colour.
+2.Enum type Direction.
+3.The functions in Board and which is not related to task questions.
+4.The functions in GameStatus and which is not related to task questions.
+5.The functions in Rotation and which is not related to task questions.
 ## List of classes
+class: Colour, Direction, Board, GameStatus, Rotation.
 
 * List below all classes in your implementation that should have unit tests.
 * For each class, list methods that can be tested in isolation.
