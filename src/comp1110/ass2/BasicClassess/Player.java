@@ -1,7 +1,6 @@
-package comp1110.ass2;
+package comp1110.ass2.BasicClassess;
 
-import java.util.ArrayList;
-import java.util.List;
+import comp1110.ass2.EnumClassess.Colour;
 
 public class Player {
     private int dirhams;

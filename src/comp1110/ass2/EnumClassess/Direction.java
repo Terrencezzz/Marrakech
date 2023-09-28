@@ -1,4 +1,4 @@
-package comp1110.ass2;
+package comp1110.ass2.EnumClassess;
 
 public enum Direction {
     NORTH(0,'N'),

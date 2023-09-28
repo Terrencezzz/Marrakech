@@ -1,5 +1,8 @@
 package comp1110.ass2;
 
+import comp1110.ass2.BasicClassess.IntPair;
+import comp1110.ass2.EnumClassess.Colour;
+
 import java.util.ArrayList;
 import java.util.List;
 
