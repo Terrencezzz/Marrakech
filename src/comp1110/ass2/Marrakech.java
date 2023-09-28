@@ -2,6 +2,9 @@ package comp1110.ass2;
 
 import comp1110.ass2.BasicClassess.*;
 import comp1110.ass2.EnumClassess.Colour;
+import comp1110.ass2.FunctionalClassess.Die;
+import comp1110.ass2.FunctionalClassess.Move;
+import comp1110.ass2.FunctionalClassess.Rotation;
 
 import java.util.List;
 

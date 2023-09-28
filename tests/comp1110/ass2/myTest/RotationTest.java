@@ -1,6 +1,6 @@
 package comp1110.ass2.myTest;
 import comp1110.ass2.EnumClassess.Direction;
-import comp1110.ass2.Rotation;
+import comp1110.ass2.FunctionalClassess.Rotation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;

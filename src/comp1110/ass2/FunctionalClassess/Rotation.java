@@ -1,4 +1,4 @@
-package comp1110.ass2;
+package comp1110.ass2.FunctionalClassess;
 
 import comp1110.ass2.BasicClassess.Assam;
 import comp1110.ass2.BasicClassess.IntPair;
