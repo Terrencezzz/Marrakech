@@ -1,8 +1,4 @@
-package comp1110.ass2;
-
-import comp1110.ass2.BasicClassess.Board;
-import comp1110.ass2.BasicClassess.GameStatus;
-import comp1110.ass2.BasicClassess.IntPair;
+package comp1110.ass2.BasicClassess;
 import comp1110.ass2.EnumClassess.Colour;
 
 import java.util.ArrayList;
@@ -23,7 +19,7 @@ public class Rug {
     /**
      * Object orientation stuff, aims to pass the test. :(
      */
-    Rug(String rugString) {
+    public Rug(String rugString) {
         if (rugString.length() == 7) {
             this.colour = Colour.charToColour(rugString.charAt(0));
             this.id = Integer.parseInt(rugString.substring(1, 3));

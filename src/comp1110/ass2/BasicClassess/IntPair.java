@@ -50,6 +50,5 @@ public class IntPair{
     public int hashCode() {
         return Objects.hash(col, row);
     }
-
 }
 

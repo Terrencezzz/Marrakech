@@ -1,7 +1,6 @@
 package comp1110.ass2.BasicClassess;
 
 import comp1110.ass2.EnumClassess.Colour;
-import comp1110.ass2.Rug;
 
 import java.util.ArrayList;
 import java.util.List;

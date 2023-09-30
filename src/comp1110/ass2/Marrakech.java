@@ -127,6 +127,9 @@ public class Marrakech {
         if (!Assam.besidePositions(assam).contains(rugTiles.get(0)) && !Assam.besidePositions(assam).contains(rugTiles.get(1))) {
             return false;
         }
+        else if (assam.getPosition().equals(rugTiles.get(0)) || assam.getPosition().equals(rugTiles.get(1))) {
+            return false;
+        }
         else return !Board.totallyOverlap(gameState, r);
     }
 
