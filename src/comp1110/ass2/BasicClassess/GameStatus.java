@@ -76,6 +76,7 @@ public class GameStatus {
 
         List<Character> winners = new ArrayList<>();
         int highestScore = 0;
+        int dirhams = 0;
 
         for (Player player : players) {
             int count = 0;
@@ -87,8 +88,9 @@ public class GameStatus {
             }
             int marks = player.getDirhams() + count;
 
-            if (marks > highestScore && player.getStatus() != 'o') {
+            if (marks > highestScore && player.getStatus() != 'o' || marks == highestScore && player.getStatus() != 'o' && player.getDirhams() > dirhams) {
                 highestScore = marks;
+                dirhams = player.getDirhams();
                 winners.clear();
                 winners.add(Colour.colourToChar(playerColour));
             } else if (marks == highestScore && player.getStatus() != 'o') {
