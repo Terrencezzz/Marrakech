@@ -33,6 +33,7 @@ public class Marrakech {
     public static boolean isRugValid(String gameString, String rug) {
         Rug rugObj = new Rug(rug);
         GameStatus gameStatus = new GameStatus(gameString);
+        Board board = gameStatus.getBoard();
 
         if (rug.length() != 7) {
             return false;
@@ -44,6 +45,9 @@ public class Marrakech {
             return false;
         }
         else if (!rugObj.isPlaceValid()) {
+            return false;
+        }
+        else if (board.getRugsIdentifier().contains(rugObj.getIdentifier())) {
             return false;
         }
         else {

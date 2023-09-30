@@ -1,5 +1,7 @@
 package comp1110.ass2;
 
+import comp1110.ass2.BasicClassess.Board;
+import comp1110.ass2.BasicClassess.GameStatus;
 import comp1110.ass2.BasicClassess.IntPair;
 import comp1110.ass2.EnumClassess.Colour;
 
@@ -48,9 +50,8 @@ public class Rug {
     public List<IntPair> getRugTiles() { return rugTiles; }
 
     public String getIdentifier() {
-        return Colour.colourToChar(colour) + Integer.toString(id);
+        return Colour.colourToChar(colour) + String.format("%02d", id);
     }
-
 
     public boolean isPlaceValid() {
         for (IntPair rugTile : rugTiles) {
