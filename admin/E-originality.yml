@@ -22,8 +22,8 @@ declaration: >-
 # (or remove it altogether if you haven't used any external assets)
 assets:
   - comment: I screen shot an Assam image from the Internet for javaFX usage.
-    url:
-    licence:
+    url: https://www.bing.com/images/search?view=detailV2&ccid=LuIemo3Q&id=102840E49B865765441D4DB55E74B8CA77890731&thid=OIP.LuIemo3QMlF24-XlUtN2yAHaFm&mediaurl=https%3A%2F%2Fwww.brilliantpuzzles.com%2Fassets%2Fimages%2FGigamic%2FMarrakech-GM516-L5.jpg&exph=530&expw=700&q=marrakech+game+board&simid=607998865217641441&form=IRPRST&ck=F8BB9CB65E578B89969C7A6108B65411&selectedindex=72&ajaxhist=0&ajaxserp=0&vt=0&sim=11
+    licence: Copyright 2023 Brilliant Puzzles. All Rights Reserved.
 
 
 # Sign *your* name and uids here. (Remove entries if you have fewer
