@@ -1,4 +1,4 @@
-package comp1110.ass2.BasicClassess;
+package comp1110.ass2.FunctionalClassess;
 
 
 import java.util.Objects;

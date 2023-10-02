@@ -3,6 +3,7 @@ package comp1110.ass2;
 import comp1110.ass2.BasicClassess.*;
 import comp1110.ass2.EnumClassess.Colour;
 import comp1110.ass2.FunctionalClassess.Die;
+import comp1110.ass2.FunctionalClassess.IntPair;
 import comp1110.ass2.FunctionalClassess.Move;
 import comp1110.ass2.FunctionalClassess.Rotation;
 
@@ -144,7 +145,9 @@ public class Marrakech {
      * @return The amount of payment due, as an integer.
      */
     public static int getPaymentAmount(String gameString) {
-        // FIXME: Task 11
+        GameStatus game = new GameStatus(gameString);
+        Assam assam = game.getAssam();
+        Board board = game.getBoard();
         return -1;
     }
 

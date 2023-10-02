@@ -2,6 +2,7 @@ package comp1110.ass2.BasicClassess;
 
 
 import comp1110.ass2.EnumClassess.Direction;
+import comp1110.ass2.FunctionalClassess.IntPair;
 
 import java.util.ArrayList;
 import java.util.List;

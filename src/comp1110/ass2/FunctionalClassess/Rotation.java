@@ -1,7 +1,6 @@
 package comp1110.ass2.FunctionalClassess;
 
 import comp1110.ass2.BasicClassess.Assam;
-import comp1110.ass2.BasicClassess.IntPair;
 import comp1110.ass2.EnumClassess.Direction;
 
 public class Rotation {
