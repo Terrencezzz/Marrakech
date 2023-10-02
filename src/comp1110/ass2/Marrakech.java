@@ -7,7 +7,9 @@ import comp1110.ass2.FunctionalClassess.IntPair;
 import comp1110.ass2.FunctionalClassess.Move;
 import comp1110.ass2.FunctionalClassess.Rotation;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Marrakech {
 
@@ -147,8 +149,17 @@ public class Marrakech {
     public static int getPaymentAmount(String gameString) {
         GameStatus game = new GameStatus(gameString);
         Assam assam = game.getAssam();
-        Board board = game.getBoard();
-        return -1;
+
+        IntPair position = assam.getPosition();
+        List<Colour> colourList = Board.getColourList(gameString);
+
+        if (Board.getColour(colourList,position) == Colour.GREY) {
+            return 0;
+        }
+        else {
+            Set<IntPair> visited = new HashSet<>();
+            return Board.dfsForPayment(assam, colourList, visited);
+        }
     }
 
     /**

@@ -1,10 +1,12 @@
 package comp1110.ass2.BasicClassess;
 
 import comp1110.ass2.EnumClassess.Colour;
+import comp1110.ass2.EnumClassess.Direction;
 import comp1110.ass2.FunctionalClassess.IntPair;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Board {
     private static final int ROWS = 7;
@@ -60,6 +62,35 @@ public class Board {
         else {
             return id1.equals(id2);
         }
+    }
+
+    public static Colour getColour(List<Colour> colourList, IntPair position) {
+        int index = position.getCol() * ROWS + position.getRow();
+        return colourList.get(index);
+    }
+
+    public static int dfsForPayment(Assam assam, List<Colour> colourList, Set<IntPair> visited) {
+        IntPair currentPos = assam.getPosition();
+
+        if (visited.contains(currentPos)) {
+            return 0;
+        }
+
+        visited.add(currentPos);
+
+        int count = 1;
+        List<IntPair> adjacentPositions = Assam.besidePositions(assam);
+        Colour currentColour = Board.getColour(colourList, currentPos);
+        Direction direction = assam.getDirection();
+
+        for (IntPair adjacentPos : adjacentPositions) {
+            if (Board.getColour(colourList, adjacentPos) == currentColour) {
+                Assam newAssam = new Assam(adjacentPos, direction);
+                count += dfsForPayment(newAssam, colourList, visited);
+            }
+        }
+
+        return count;
     }
 }
 

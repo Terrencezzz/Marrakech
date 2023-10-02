@@ -16,9 +16,6 @@ public class Player {
         this.colour = colour;
     }
 
-    /**
-     * In order to pass the test, I make this shit done.
-     */
     Player(String playerString){
         if (playerString.charAt(0) == 'P') {
             this.colour = Colour.charToColour(playerString.charAt(1));
@@ -29,7 +26,7 @@ public class Player {
     }
 
     /**
-     * The function below are all getter methods or setter methods, I'm not sure if I will use them or not, but I just
+     * The function following are all getter methods or setter methods, I'm not sure if I will use them or not, but I just
      * keep them for now.
      */
     public int getDirhams() {
