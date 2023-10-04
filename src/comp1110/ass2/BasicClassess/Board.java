@@ -93,6 +93,21 @@ public class Board {
         return count;
     }
 
+    public static Board newBoard(Board board, Rug rug) {
+        String r = rug.getIdentifier();
+        IntPair position1 = rug.getRugTiles().get(0);
+        IntPair position2 = rug.getRugTiles().get(1);
+
+        int index1 = position1.getCol() * ROWS + position1.getRow();
+        int index2 = position2.getCol() * ROWS + position2.getRow();
+
+        List<String> rugIdList = board.getRugsIdentifier();
+        rugIdList.set(index1,r);
+        rugIdList.set(index2,r);
+
+        return new Board(rugIdList);
+    }
+
     @Override
     public String toString(){
         String s = "";

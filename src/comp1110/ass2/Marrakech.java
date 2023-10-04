@@ -220,11 +220,19 @@ public class Marrakech {
     public static String makePlacement(String currentGame, String rug) {
         GameStatus currentGameStatus = new GameStatus(currentGame);
         Rug rugObj = new Rug(rug);
+        Board board = currentGameStatus.getBoard();
+        List<Player> players = currentGameStatus.getPlayers();
+        Assam assam = currentGameStatus.getAssam();
 
-        if (isRugValid(currentGame,rug) && !isGameOver(currentGame)) {
-
+        if (isRugValid(currentGame,rug) && !isGameOver(currentGame) && isPlacementValid(currentGame,rug)) {
+            List<Player> newPlayers = Player.newPlayer_Rug(players,rugObj);
+            Board newBoard = Board.newBoard(board,rugObj);
+            GameStatus newGameStatus = new GameStatus(newPlayers, assam, newBoard);
+            return newGameStatus.toString();
         }
-        return "";
+        else {
+            return currentGame;
+        }
     }
 
 }

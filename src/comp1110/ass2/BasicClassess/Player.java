@@ -2,6 +2,8 @@ package comp1110.ass2.BasicClassess;
 
 import comp1110.ass2.EnumClassess.Colour;
 
+import java.util.List;
+
 public class Player {
     private int dirhams;
     private int rugNumber;
@@ -61,9 +63,26 @@ public class Player {
         this.colour = colour;
     }
 
+
+    public static List<Player> newPlayer_Rug(List<Player> players, Rug rug) {
+        for (Player player : players) {
+            if (player.colour == rug.getColour()) {
+                if (player.status != 'o') {
+                    int dirhams = player.dirhams;
+                    char status = player.status;
+                    Colour colour = player.colour;
+                    int rugRemain = player.getRugNumber() - 1;
+                    Player newPlayer = new Player(dirhams,rugRemain,status,colour);
+                    players.set(players.indexOf(player),newPlayer);
+                }
+            }
+        }
+        return players;
+    }
+
     @Override
     public String toString(){
-        return Colour.colourToChar(this.colour) +
+        return "P" +Colour.colourToChar(this.colour) +
                 String.format("%03d", this.dirhams) +
                 String.format("%02d", this.rugNumber) +
                 this.status;
