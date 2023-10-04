@@ -67,14 +67,12 @@ public class Player {
     public static List<Player> newPlayer_Rug(List<Player> players, Rug rug) {
         for (Player player : players) {
             if (player.colour == rug.getColour()) {
-                if (player.status != 'o') {
-                    int dirhams = player.dirhams;
-                    char status = player.status;
-                    Colour colour = player.colour;
-                    int rugRemain = player.getRugNumber() - 1;
-                    Player newPlayer = new Player(dirhams,rugRemain,status,colour);
-                    players.set(players.indexOf(player),newPlayer);
-                }
+                int dirhams = player.dirhams;
+                char status = player.status;
+                Colour colour = player.colour;
+                int rugRemain = player.getRugNumber() - 1;
+                Player newPlayer = new Player(dirhams,rugRemain,status,colour);
+                players.set(players.indexOf(player),newPlayer);
             }
         }
         return players;
