@@ -1,6 +1,7 @@
 package comp1110.ass2.myTest;
 
 import comp1110.ass2.BasicClassess.Board;
+import comp1110.ass2.BasicClassess.GameStatus;
 import comp1110.ass2.EnumClassess.Colour;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -43,8 +44,12 @@ public class GetColourListTest {
                 Colour.YELLOW, Colour.YELLOW);
 
 
-        Assertions.assertEquals(expectList1, Board.getColourList(gameString1));
-        Assertions.assertEquals(expectList2, Board.getColourList(gameString2));
-        Assertions.assertEquals(expectList3, Board.getColourList(gameString3));
+        GameStatus g1 = new GameStatus(gameString1);
+        GameStatus g2 = new GameStatus(gameString2);
+        GameStatus g3 = new GameStatus(gameString3);
+
+        Assertions.assertEquals(expectList1, Board.getColourList(g1.toString()));
+        Assertions.assertEquals(expectList2, Board.getColourList(g2.toString()));
+        Assertions.assertEquals(expectList3, Board.getColourList(g3.toString()));
     }
 }

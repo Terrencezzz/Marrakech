@@ -11,6 +11,12 @@ public class GameStatus {
     private Board board;
     private String gameString;
 
+    public GameStatus(List<Player> players, Assam assam, Board board) {
+        this.players = players;
+        this.assam = assam;
+        this.board = board;
+    }
+
     public GameStatus(String gameString) {
         this.gameString = gameString;
         int indexOfA = gameString.indexOf('A');
@@ -106,4 +112,20 @@ public class GameStatus {
         }
     }
 
+    @Override
+    public String toString(){
+        String s = "";
+        for (Player player : this.players) {
+            s += player.toString();
+        }
+        s += this.assam.toString();
+        s += this.board.toString();
+        return "P" + s;
+    }
+
+    public static void main(String[] args) {
+        String games = "Pc02709iPy03109iPp02309iPr03910iA66SBn00y04n00n00n00n00n00c03y04r02p06r05r05c04c03r00r00p06r08r03r03p02p02y08c11c11n00n00r04n00n00n00n00n00n00r04y02p08n00n00p10p10c07c07p08y05y05r09c10";
+        GameStatus g = new GameStatus(games);
+        System.out.println(g);
+    }
 }

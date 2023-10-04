@@ -218,7 +218,12 @@ public class Marrakech {
      * or the input currentGame unchanged otherwise.
      */
     public static String makePlacement(String currentGame, String rug) {
-        // FIXME: Task 14
+        GameStatus currentGameStatus = new GameStatus(currentGame);
+        Rug rugObj = new Rug(rug);
+
+        if (isRugValid(currentGame,rug) && !isGameOver(currentGame)) {
+
+        }
         return "";
     }
 

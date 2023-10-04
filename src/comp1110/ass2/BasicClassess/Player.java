@@ -61,4 +61,11 @@ public class Player {
         this.colour = colour;
     }
 
+    @Override
+    public String toString(){
+        return Colour.colourToChar(this.colour) +
+                String.format("%03d", this.dirhams) +
+                String.format("%02d", this.rugNumber) +
+                this.status;
+    }
 }

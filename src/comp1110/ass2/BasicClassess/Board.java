@@ -92,6 +92,15 @@ public class Board {
 
         return count;
     }
+
+    @Override
+    public String toString(){
+        String s = "";
+        for (String rug : this.rugsIdentifier) {
+            s += rug;
+        }
+        return "B" + s;
+    }
 }
 
 

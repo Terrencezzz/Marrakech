@@ -17,9 +17,6 @@ public class Rug {
         this.rugTiles = rugTiles;
     }
 
-    /**
-     * Object orientation stuff, aims to pass the test. :(
-     */
     public Rug(String rugString) {
         if (rugString.length() == 7) {
             this.colour = Colour.charToColour(rugString.charAt(0));

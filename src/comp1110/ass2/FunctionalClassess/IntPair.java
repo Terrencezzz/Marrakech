@@ -50,5 +50,10 @@ public class IntPair{
     public int hashCode() {
         return Objects.hash(col, row);
     }
+
+    @Override
+    public String toString() {
+        return this.row + "" + this.col;
+    }
 }
 
