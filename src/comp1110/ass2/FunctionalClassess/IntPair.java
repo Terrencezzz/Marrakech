@@ -5,6 +5,7 @@ import java.util.Objects;
 
 /**
  * This class is aimed to meet some requirements about the coordinate system.
+ * @author Terrence Wu
  */
 public class IntPair{
     /**

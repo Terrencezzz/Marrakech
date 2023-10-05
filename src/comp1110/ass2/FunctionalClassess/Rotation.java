@@ -3,6 +3,10 @@ package comp1110.ass2.FunctionalClassess;
 import comp1110.ass2.BasicClassess.Assam;
 import comp1110.ass2.EnumClassess.Direction;
 
+
+/**
+ * @author Terrence Wu
+ */
 public class Rotation {
     private Direction direction;
     public Rotation(Direction direction) {

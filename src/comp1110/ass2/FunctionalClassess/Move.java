@@ -6,6 +6,7 @@ import comp1110.ass2.EnumClassess.Direction;
 
 /**
  * This class aims to deal with the movement about Assam(The customer).
+ * @author Terrence Wu
  */
 public class Move {
 
