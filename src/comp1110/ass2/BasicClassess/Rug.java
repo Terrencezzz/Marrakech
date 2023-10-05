@@ -5,6 +5,10 @@ import comp1110.ass2.FunctionalClassess.IntPair;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * @author Terrence Wu
+ */
 public class Rug {
     private Colour colour;
     private int id;

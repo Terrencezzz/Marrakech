@@ -1,5 +1,9 @@
 package comp1110.ass2.EnumClassess;
 
+
+/**
+ * @author Terrence Wu
+ */
 public enum Direction {
     NORTH(0,'N'),
     EAST(90,'E'),

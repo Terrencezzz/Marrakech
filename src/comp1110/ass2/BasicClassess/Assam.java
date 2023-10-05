@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * This class aims to record the status of Assam.
+ * @author Terrence Wu
  */
 public class Assam {
 

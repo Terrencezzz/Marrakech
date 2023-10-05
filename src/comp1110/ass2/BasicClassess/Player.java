@@ -4,6 +4,10 @@ import comp1110.ass2.EnumClassess.Colour;
 
 import java.util.List;
 
+
+/**
+ * @author Terrence Wu
+ */
 public class Player {
     private int dirhams;
     private int rugNumber;

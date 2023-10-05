@@ -11,6 +11,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * @author Terrence Wu
+ *
+ */
 public class Marrakech {
 
     /**
@@ -98,6 +102,7 @@ public class Marrakech {
      * For example, if he is currently facing North (towards the top of the board), then he could be rotated to face
      * East or West, but not South. Assam can also only be rotated in 90 degree increments.
      * If the requested rotation is illegal, you should return Assam's current state unchanged.
+     * @author name
      * @param currentAssam A String representing Assam's current state
      * @param rotation The requested rotation, in degrees. This degree reading is relative to the direction Assam
      *                 is currently facing, so a value of 0 for this argument will keep Assam facing in his
@@ -224,6 +229,7 @@ public class Marrakech {
         List<Player> players = currentGameStatus.getPlayers();
         Assam assam = currentGameStatus.getAssam();
 
+        System.out.println(isRugValid(currentGame,rug) + " " + !isGameOver(currentGame) +" " + isPlacementValid(currentGame,rug));
         if (isRugValid(currentGame,rug) && !isGameOver(currentGame) && isPlacementValid(currentGame,rug)) {
             List<Player> newPlayers = Player.newPlayer_Rug(players,rugObj);
             Board newBoard = Board.newBoard(board,rugObj);

@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+
+/**
+ * @author Terrence Wu
+ */
 public class Board {
     private static final int ROWS = 7;
     private static final int COLUMNS = 7;

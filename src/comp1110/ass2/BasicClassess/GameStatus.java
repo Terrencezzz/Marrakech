@@ -5,6 +5,10 @@ import comp1110.ass2.EnumClassess.Colour;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * @author Terrence Wu
+ */
 public class GameStatus {
     private List<Player> players;
     private Assam assam;
