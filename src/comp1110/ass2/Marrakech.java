@@ -229,8 +229,7 @@ public class Marrakech {
         List<Player> players = currentGameStatus.getPlayers();
         Assam assam = currentGameStatus.getAssam();
 
-        System.out.println(isRugValid(currentGame,rug) + " " + !isGameOver(currentGame) +" " + isPlacementValid(currentGame,rug));
-        if (isRugValid(currentGame,rug) && !isGameOver(currentGame) && isPlacementValid(currentGame,rug)) {
+        if (isRugValid(currentGame,rug) && isPlacementValid(currentGame,rug)) {
             List<Player> newPlayers = Player.newPlayer_Rug(players,rugObj);
             Board newBoard = Board.newBoard(board,rugObj);
             GameStatus newGameStatus = new GameStatus(newPlayers, assam, newBoard);
