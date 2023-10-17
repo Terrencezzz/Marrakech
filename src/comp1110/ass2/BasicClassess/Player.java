@@ -15,7 +15,7 @@ public class Player {
     private Colour colour;
 
 
-    Player(int dirhams, int rugNumber, char status, Colour colour){
+    public Player(int dirhams, int rugNumber, char status, Colour colour){
         this.dirhams = dirhams;
         this.rugNumber = rugNumber;
         this.status = status;

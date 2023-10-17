@@ -31,7 +31,7 @@ public class Viewer extends Application {
     private static final int VIEWER_WIDTH = 1200;
     private static final int VIEWER_HEIGHT = 700;
 
-    private final Group root = new Group();
+    private static final Group root = new Group();
     private final Group controls = new Group();
     private TextField boardTextField;
 
@@ -41,11 +41,10 @@ public class Viewer extends Application {
      *
      * @param state an array of two strings, representing the current game state
      */
-    void displayState(String state) {
+    static void displayState(String state) {
 
         //These are for the squares
         GameStatus gameString = new GameStatus(state);
-        Board board = gameString.getBoard();
         List<Colour> rugColorList = Board.getColourList(state);
         double side = 80;
 
@@ -55,20 +54,31 @@ public class Viewer extends Application {
         for (int col = 0; col < 7; col++){
             for (int row = 0; row < 7; row++){
                 Square square = new Square(x,y,side);
-                Colour rugColour = rugColorList.get(col * 7 + row);
-                if (rugColour != Colour.GREY) {
-                    Color javaFXColor = Colour.colourToJavaFXColor(rugColour);
-                    square.setFill(javaFXColor);
-                    square.setStroke(Color.BLACK);
-                    square.setStrokeWidth(2);
-                    squares.add(square);
+                Color javaFXColor;
+
+                if (rugColorList.isEmpty()) {
+                    javaFXColor = Colour.colourToJavaFXColor(Colour.GREY);
+                } else {
+                    Colour rugColour = rugColorList.get(col * 7 + row);
+                    if (rugColour != Colour.GREY) {
+                        javaFXColor = Colour.colourToJavaFXColor(rugColour);
+                        square.setStroke(Color.BLACK);
+                        square.setStrokeWidth(2);
+                    } else {
+                        javaFXColor = Colour.colourToJavaFXColor(Colour.GREY);
+                    }
                 }
+
+                square.setFill(javaFXColor);
+                squares.add(square);
+
                 x += side;
             }
             y += side;
             x = 110;
         }
         root.getChildren().addAll(squares);
+
 
 
 
@@ -79,7 +89,7 @@ public class Viewer extends Application {
         int col = assamPosition.getCol();
         int row = assamPosition.getRow();
 
-        URL assamImageUrl = getClass().getResource("assam.png");
+        URL assamImageUrl = Viewer.class.getResource("assam.png");
         Image assamImage = new Image(assamImageUrl.toString());
         ImageView imageView = new ImageView(assamImage);
         imageView.setFitWidth(80);

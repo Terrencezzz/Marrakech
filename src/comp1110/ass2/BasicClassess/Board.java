@@ -21,7 +21,7 @@ public class Board {
         this.rugsIdentifier = rugs;
     }
 
-    Board(String boardString) {
+    public Board(String boardString) {
         if (boardString.length() == 49 * 3) {
             for (int i = 0; i < 49; i++) {
                 String rugIdentifier = boardString.substring(i * 3, i * 3 + 3);
