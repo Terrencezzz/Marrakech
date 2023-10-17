@@ -39,24 +39,12 @@ public class Player {
         return dirhams;
     }
 
-    public void setDirhams(int dirhams) {
-        this.dirhams = dirhams;
-    }
-
     public int getRugNumber() {
         return rugNumber;
     }
 
-    public void setRugNumber(int rugNumber) {
-        this.rugNumber = rugNumber;
-    }
-
     public char getStatus() {
         return status;
-    }
-
-    public void setStatus(char status) {
-        this.status = status;
     }
 
     public Colour getPlayerColour() {

@@ -14,13 +14,6 @@ public class Rug {
     private int id;
     private List<IntPair> rugTiles;
 
-
-    Rug(Colour colour, int id, List<IntPair> rugTiles) {
-        this.colour = colour;
-        this.id = id;
-        this.rugTiles = rugTiles;
-    }
-
     public Rug(String rugString) {
         if (rugString.length() == 7) {
             this.colour = Colour.charToColour(rugString.charAt(0));
