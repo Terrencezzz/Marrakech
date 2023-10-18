@@ -1,8 +1,8 @@
 package comp1110.ass2.myTest;
 
-import comp1110.ass2.BasicClassess.Board;
-import comp1110.ass2.BasicClassess.GameStatus;
-import comp1110.ass2.EnumClassess.Colour;
+import comp1110.ass2.BasicClasses.Board;
+import comp1110.ass2.BasicClasses.GameStatus;
+import comp1110.ass2.EnumClasses.Colour;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;

@@ -1,8 +1,8 @@
-package comp1110.ass2.FunctionalClassess;
+package comp1110.ass2.FunctionalClasses;
 
 
-import comp1110.ass2.BasicClassess.Assam;
-import comp1110.ass2.EnumClassess.Direction;
+import comp1110.ass2.BasicClasses.Assam;
+import comp1110.ass2.EnumClasses.Direction;
 
 /**
  * This class aims to deal with the movement about Assam(The customer).

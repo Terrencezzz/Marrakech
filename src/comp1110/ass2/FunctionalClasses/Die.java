@@ -1,4 +1,4 @@
-package comp1110.ass2.FunctionalClassess;
+package comp1110.ass2.FunctionalClasses;
 
 import java.util.Random;
 /**

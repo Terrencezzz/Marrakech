@@ -1,13 +1,13 @@
 package comp1110.ass2.gui;
 
-import comp1110.ass2.BasicClassess.Assam;
-import comp1110.ass2.BasicClassess.Board;
-import comp1110.ass2.BasicClassess.GameStatus;
-import comp1110.ass2.BasicClassess.Player;
-import comp1110.ass2.EnumClassess.Colour;
-import comp1110.ass2.EnumClassess.Direction;
-import comp1110.ass2.FunctionalClassess.IntPair;
-import comp1110.ass2.FunctionalClassess.Rotation;
+import comp1110.ass2.BasicClasses.Assam;
+import comp1110.ass2.BasicClasses.Board;
+import comp1110.ass2.BasicClasses.GameStatus;
+import comp1110.ass2.BasicClasses.Player;
+import comp1110.ass2.EnumClasses.Colour;
+import comp1110.ass2.EnumClasses.Direction;
+import comp1110.ass2.FunctionalClasses.IntPair;
+import comp1110.ass2.FunctionalClasses.Rotation;
 import comp1110.ass2.Marrakech;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -52,9 +52,14 @@ public class Game extends Application {
     Board board = new Board("n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00");
     IntPair position1;
     IntPair position2;
+    GameStatus game;
+    String gameStatus = "Game Start";
 
 
     void displayGame(String state) {
+
+        root.getChildren().removeIf(child -> !"background".equals(child.getId()));
+
         //These are for the squares
         GameStatus gameString = new GameStatus(state);
         List<Colour> rugColorList = Board.getColourList(state);
@@ -106,11 +111,21 @@ public class Game extends Application {
         imageView.setRotate(rotationAngle);
 
         imageView.setOnMouseClicked(e -> {
-            rotationAngle += 90;
-            if (rotationAngle == 360) {
-                rotationAngle = 0;
+            if (gameStatus.equals("Game Start")) {
+                rotationAngle += 90;
+                rotateAssam();
+                if (rotationAngle == 360) {
+                    rotationAngle = 0;
+                }
+                imageView.setRotate(rotationAngle);
             }
-            imageView.setRotate(rotationAngle);
+            if (gameStatus.equals("Game Process")) {
+                rotationAngle += 90;
+                if (rotationAngle == 360) {
+                    rotationAngle = 0;
+                }
+
+            }
         });
 
         root.getChildren().add(imageView);
@@ -320,28 +335,33 @@ public class Game extends Application {
         for (int i = 0; i < 4; i++) {
             Circle circle = new Circle(centerX1 + i * 160, centerY1, radius);
             circle.setFill(Color.BLUE);
+            circle.setId("background");
             root.getChildren().add(circle);
         }
 
         for (int i = 0; i < 4; i++) {
             Circle circle = new Circle(centerX2 + i * 160, centerY2, radius);
             circle.setFill(Color.BLUE);
+            circle.setId("background");
             root.getChildren().add(circle);
         }
 
         for (int i = 1; i < 4; i++) {
             Circle circle = new Circle(centerX2, centerY2 - i * 160, radius);
             circle.setFill(Color.BLUE);
+            circle.setId("background");
             root.getChildren().add(circle);
         }
 
         for (int i = 1; i < 4; i++) {
             Circle circle = new Circle(centerX3, centerY1 + i * 160, radius);
             circle.setFill(Color.BLUE);
+            circle.setId("background");
             root.getChildren().add(circle);
         }
 
         Rectangle greyBoard = new Rectangle();
+        greyBoard.setId("background");
         greyBoard.setWidth(560);
         greyBoard.setHeight(560);
         greyBoard.setFill(Color.GRAY);
@@ -349,6 +369,8 @@ public class Game extends Application {
         greyBoard.setY((double) (WINDOW_HEIGHT - 560) / 2);
 
         root.getChildren().add(greyBoard);
+
+
         displayGame(setupInitialGameStatus(playerCount).toString());
 
 
@@ -370,6 +392,12 @@ public class Game extends Application {
                 root.getChildren().add(draggableRect);
             }
         }
+
+        Text text = new Text("Turn: " + turn.get(index));
+        text.setX(1000);
+        text.setY(600);
+        text.setFont(new Font(30));
+        root.getChildren().add(text);
 
         return new Scene(this.root, WINDOW_WIDTH, WINDOW_HEIGHT);
     }

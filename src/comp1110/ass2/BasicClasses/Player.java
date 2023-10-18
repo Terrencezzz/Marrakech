@@ -1,6 +1,6 @@
-package comp1110.ass2.BasicClassess;
+package comp1110.ass2.BasicClasses;
 
-import comp1110.ass2.EnumClassess.Colour;
+import comp1110.ass2.EnumClasses.Colour;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
 package comp1110.ass2.gui;
 
-import comp1110.ass2.BasicClassess.*;
-import comp1110.ass2.EnumClassess.Colour;
-import comp1110.ass2.EnumClassess.Direction;
-import comp1110.ass2.FunctionalClassess.IntPair;
-import comp1110.ass2.FunctionalClassess.Rotation;
+import comp1110.ass2.BasicClasses.*;
+import comp1110.ass2.EnumClasses.Colour;
+import comp1110.ass2.EnumClasses.Direction;
+import comp1110.ass2.FunctionalClasses.IntPair;
+import comp1110.ass2.FunctionalClasses.Rotation;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

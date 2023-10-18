@@ -1,4 +1,4 @@
-package comp1110.ass2.EnumClassess;
+package comp1110.ass2.EnumClasses;
 
 
 /**
