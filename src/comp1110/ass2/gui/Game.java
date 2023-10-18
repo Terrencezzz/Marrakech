@@ -6,6 +6,7 @@ import comp1110.ass2.BasicClasses.GameStatus;
 import comp1110.ass2.BasicClasses.Player;
 import comp1110.ass2.EnumClasses.Colour;
 import comp1110.ass2.EnumClasses.Direction;
+import comp1110.ass2.FunctionalClasses.Die;
 import comp1110.ass2.FunctionalClasses.IntPair;
 import comp1110.ass2.FunctionalClasses.Rotation;
 import comp1110.ass2.Marrakech;
@@ -47,13 +48,16 @@ public class Game extends Application {
     int col = 0;
     int index = 0;
     double rotationAngle;
+    int rotateTime = 0;
     List<String> turn = new ArrayList<>();
+    List<Player> allPlayers = new ArrayList<>();
     Assam assam = new Assam("A33N");
+    String assamString = assam.toString();
     Board board = new Board("n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00");
     IntPair position1;
     IntPair position2;
-    GameStatus game;
-    String gameStatus = "Game Start";
+    String gameStatus = "Game Process";
+    String assanStatus = "Not Yet";
 
 
     void displayGame(String state) {
@@ -113,18 +117,33 @@ public class Game extends Application {
         imageView.setOnMouseClicked(e -> {
             if (gameStatus.equals("Game Start")) {
                 rotationAngle += 90;
-                rotateAssam();
+                rotateAssam(90);
                 if (rotationAngle == 360) {
                     rotationAngle = 0;
                 }
-                imageView.setRotate(rotationAngle);
+                Assam newAssam = new Assam(assamString);
+                GameStatus g = new GameStatus(allPlayers,newAssam,board);
+                displayGame(g.toString());
             }
-            if (gameStatus.equals("Game Process")) {
+            else if (gameStatus.equals("Game Process") && assanStatus.equals("Not Yet")) {
                 rotationAngle += 90;
+                updateRotateTime();
                 if (rotationAngle == 360) {
                     rotationAngle = 0;
                 }
 
+                if (rotateTime == 2) {
+                    rotationAngle += 90;
+                    updateRotateTime();
+                }
+
+                rotateAssam((int)rotationAngle);
+                Assam newAssam = new Assam(assamString);
+                GameStatus g = new GameStatus(allPlayers,newAssam,board);
+                displayGame(g.toString());
+                System.out.println(rotationAngle);
+                System.out.println(assamString);
+                System.out.println(rotateTime);
             }
         });
 
@@ -167,6 +186,14 @@ public class Game extends Application {
         root.getChildren().addAll(leftPlayerBox, rightPlayerBox);
     }
 
+    void updateRotateTime() {
+        if (rotateTime < 3) {
+            rotateTime += 1;
+        }
+        else {
+            rotateTime = 0;
+        }
+    }
 
     private static class Square extends Polygon {
         Square(double col, double row, double side){
@@ -261,7 +288,6 @@ public class Game extends Application {
     }
 
     private GameStatus setupInitialGameStatus(int playerCount) {
-        List<Player> allPlayers = new ArrayList<>();
 
         if (playerCount == 2) {
             allPlayers.add(new Player(30,15,'i',Colour.CYAN));
@@ -296,8 +322,8 @@ public class Game extends Application {
         });
     }
 
-    void rotateAssam() {
-        Marrakech.rotateAssam(assam.toString(),90);
+    void rotateAssam(int r) {
+        assamString = Marrakech.rotateAssam(assamString,r);
     }
 
 
@@ -321,10 +347,34 @@ public class Game extends Application {
             turn.add("PURPLE");
             turn.add("RED");
         }
-        System.out.println(turn);
+    }
+
+    private void applyTransform() {
+        assamString = Marrakech.moveAssam(assamString, Die.getDieNumber());
+        gameStatus = "Game Process";
+        assanStatus = "Moved";
     }
 
     private Scene createGameScene() {
+
+        Button goButton = new Button("GO");
+        goButton.setId("background");
+        goButton.setPrefWidth(100);
+        goButton.setPrefHeight(50);
+        goButton.setLayoutX(50);
+        goButton.setLayoutY(WINDOW_HEIGHT - 100);
+        goButton.setOnAction(e -> {
+            if (assanStatus.equals("Not Yet")) {
+                applyTransform();
+                Assam newAssam = new Assam(assamString);
+                GameStatus g = new GameStatus(allPlayers,newAssam,board);
+                displayGame(g.toString());
+            }
+        });
+
+        root.getChildren().add(goButton);
+
+
         int centerX1 = 400;
         int centerY1 = 70;
         int centerX2 = 320;
@@ -379,6 +429,7 @@ public class Game extends Application {
         double rectHeight = 80;
         for (int i = 0; i < 4; i++) {
             Rectangle draggableRect = createDraggableRectangle(50, 150 + i * (rectHeight + 20), rectWidth, rectHeight, false, rectangleColors[i]);
+            draggableRect.setId("background");
             draggableRect.setFill(Colour.colourToJavaFXColor(rectangleColors[i]));
             root.getChildren().add(draggableRect);
         }
@@ -388,12 +439,14 @@ public class Game extends Application {
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
                 Rectangle draggableRect = createDraggableRectangle(1000 + i * (rectWidthV + 20), 150 + j * (rectHeightV + 10), rectWidthV, rectHeightV, true, rectangleColors[i * 2 + j]);
+                draggableRect.setId("background");
                 draggableRect.setFill(Colour.colourToJavaFXColor(rectangleColors[i * 2 + j]));
                 root.getChildren().add(draggableRect);
             }
         }
 
         Text text = new Text("Turn: " + turn.get(index));
+        text.setId("background");
         text.setX(1000);
         text.setY(600);
         text.setFont(new Font(30));
