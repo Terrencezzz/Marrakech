@@ -41,7 +41,7 @@ public class Viewer extends Application {
      *
      * @param state an array of two strings, representing the current game state
      */
-    static void displayState(String state) {
+    void displayState(String state) {
 
         //These are for the squares
         GameStatus gameString = new GameStatus(state);
@@ -54,31 +54,20 @@ public class Viewer extends Application {
         for (int col = 0; col < 7; col++){
             for (int row = 0; row < 7; row++){
                 Square square = new Square(x,y,side);
-                Color javaFXColor;
-
-                if (rugColorList.isEmpty()) {
-                    javaFXColor = Colour.colourToJavaFXColor(Colour.GREY);
-                } else {
-                    Colour rugColour = rugColorList.get(col * 7 + row);
-                    if (rugColour != Colour.GREY) {
-                        javaFXColor = Colour.colourToJavaFXColor(rugColour);
-                        square.setStroke(Color.BLACK);
-                        square.setStrokeWidth(2);
-                    } else {
-                        javaFXColor = Colour.colourToJavaFXColor(Colour.GREY);
-                    }
+                Colour rugColour = rugColorList.get(col * 7 + row);
+                if (rugColour != Colour.GREY) {
+                    Color javaFXColor = Colour.colourToJavaFXColor(rugColour);
+                    square.setFill(javaFXColor);
+                    square.setStroke(Color.BLACK);
+                    square.setStrokeWidth(2);
+                    squares.add(square);
                 }
-
-                square.setFill(javaFXColor);
-                squares.add(square);
-
                 x += side;
             }
             y += side;
             x = 110;
         }
         root.getChildren().addAll(squares);
-
 
 
 

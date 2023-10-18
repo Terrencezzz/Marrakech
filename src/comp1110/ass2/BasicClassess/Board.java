@@ -17,7 +17,7 @@ public class Board {
     private static final int COLUMNS = 7;
     private List<String> rugsIdentifier = new ArrayList<>();
 
-    Board (List<String> rugs) {
+    public Board (List<String> rugs) {
         this.rugsIdentifier = rugs;
     }
 
