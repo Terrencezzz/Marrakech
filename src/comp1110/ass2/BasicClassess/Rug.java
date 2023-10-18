@@ -10,13 +10,18 @@ import java.util.List;
  * @author Terrence Wu
  */
 public class Rug {
-    private Colour colour;
+    private char colour;
     private int id;
     private List<IntPair> rugTiles;
 
+    public Rug(char colour, int id, List<IntPair> rugTiles) {
+        this.colour = colour;
+        this.id = id;
+        this.rugTiles = rugTiles;
+    }
     public Rug(String rugString) {
         if (rugString.length() == 7) {
-            this.colour = Colour.charToColour(rugString.charAt(0));
+            this.colour = rugString.charAt(0);
             this.id = Integer.parseInt(rugString.substring(1, 3));
             this.rugTiles = new ArrayList<>();
             int col1 = Character.getNumericValue(rugString.charAt(3));
@@ -35,13 +40,13 @@ public class Rug {
     }
 
     public Colour getColour() {
-        return colour;
+        return Colour.charToColour(colour);
     }
 
     public List<IntPair> getRugTiles() { return rugTiles; }
 
     public String getIdentifier() {
-        return Colour.colourToChar(colour) + String.format("%02d", id);
+        return colour + String.format("%02d", id);
     }
 
     public boolean isPlaceValid() {
@@ -52,6 +57,17 @@ public class Rug {
             }
         }
         return true;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(colour);
+        sb.append(String.format("%02d", id));
+        for (IntPair rugTile : rugTiles) {
+            sb.append(rugTile.getCol());
+            sb.append(rugTile.getRow());
+        }
+        return sb.toString();
     }
 }
 

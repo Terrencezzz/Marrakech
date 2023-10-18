@@ -8,6 +8,7 @@ import comp1110.ass2.EnumClassess.Colour;
 import comp1110.ass2.EnumClassess.Direction;
 import comp1110.ass2.FunctionalClassess.IntPair;
 import comp1110.ass2.FunctionalClassess.Rotation;
+import comp1110.ass2.Marrakech;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -25,10 +26,13 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+//JavaFx is bull shit
 
 public class Game extends Application {
 
@@ -41,7 +45,11 @@ public class Game extends Application {
 
     int row = 0;
     int col = 0;
-
+    int index = 0;
+    double rotationAngle;
+    List<String> turn = new ArrayList<>();
+    Assam assam = new Assam("A33N");
+    Board board = new Board("n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00");
     IntPair position1;
     IntPair position2;
 
@@ -94,11 +102,18 @@ public class Game extends Application {
         imageView.setX(assamX);
         imageView.setY(assamY);
 
-        double rotationAngle = Rotation.directionToInt(assamDirection);
+        rotationAngle = Rotation.directionToInt(assamDirection);
         imageView.setRotate(rotationAngle);
 
-        root.getChildren().add(imageView);
+        imageView.setOnMouseClicked(e -> {
+            rotationAngle += 90;
+            if (rotationAngle == 360) {
+                rotationAngle = 0;
+            }
+            imageView.setRotate(rotationAngle);
+        });
 
+        root.getChildren().add(imageView);
 
 
         //These are for the players' information
@@ -148,42 +163,44 @@ public class Game extends Application {
     }
 
 
-    private Rectangle createDraggableRectangle(double x, double y, double width, double height, boolean vertical) {
+    private Rectangle createDraggableRectangle(double x, double y, double width, double height, boolean vertical, Colour rectangleColour) {
         Rectangle rect = new Rectangle(x, y, width, height);
         rect.setFill(Color.TRANSPARENT);
         rect.setStroke(Color.BLACK);
         rect.setStrokeWidth(2);
 
-        rect.setOnMousePressed(event -> {
-            offsetX = event.getSceneX() - rect.getX();
-            offsetY = event.getSceneY() - rect.getY();
-        });
+        if (turn.get(index).equals(rectangleColour.toString())) {
+            rect.setOnMousePressed(event -> {
+                offsetX = event.getSceneX() - rect.getX();
+                offsetY = event.getSceneY() - rect.getY();
+            });
 
-        rect.setOnMouseDragged(event -> {
-            rect.setX(event.getSceneX() - offsetX);
-            rect.setY(event.getSceneY() - offsetY);
-        });
+            rect.setOnMouseDragged(event -> {
+                rect.setX(event.getSceneX() - offsetX);
+                rect.setY(event.getSceneY() - offsetY);
+            });
 
-        rect.setOnMouseReleased(event -> {
+            rect.setOnMouseReleased(event -> {
 
-            double side = 80;
-            rect.setX(Math.round(rect.getX() / side) * side);
-            rect.setY(Math.round(rect.getY() / side) * side - 10);
+                double side = 80;
+                rect.setX(Math.round(rect.getX() / side) * side);
+                rect.setY(Math.round(rect.getY() / side) * side - 10);
 
-            if (vertical) {
-                col = (int) ((rect.getX() - 320) / side);
-                row = (int) ((rect.getY() - 70) / side);
-                position1 = new IntPair(row, col);
-                position2 = new IntPair(row+1, col);
-            }
-            else {
-                col = (int) ((rect.getX() - 320) / side);
-                row = (int) ((rect.getY() - 70) / side);
+                if (vertical) {
+                    col = (int) ((rect.getX() - 320) / side);
+                    row = (int) ((rect.getY() - 70) / side);
+                    position1 = new IntPair(row, col);
+                    position2 = new IntPair(row+1, col);
+                }
+                else {
+                    col = (int) ((rect.getX() - 320) / side);
+                    row = (int) ((rect.getY() - 70) / side);
 
-                position1 = new IntPair(row,col);
-                position2 = new IntPair(row,col+1);
-            }
-        });
+                    position1 = new IntPair(row,col);
+                    position2 = new IntPair(row,col+1);
+                }
+            });
+        }
 
         return rect;
     }
@@ -248,8 +265,6 @@ public class Game extends Application {
             allPlayers.add(new Player(30,15,'i',Colour.RED));
         }
 
-        Assam assam = new Assam("A33N");
-        Board board = new Board("n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00");
         return new GameStatus(allPlayers, assam, board);
     }
 
@@ -259,15 +274,39 @@ public class Game extends Application {
         button.setFont(new Font(24));
         button.setOnAction(e -> {
             setPlayerCount(playerCount);
+            setTurn(playerCount);
             Scene gameScene = createGameScene();
             Stage currentStage = (Stage) button.getScene().getWindow();
             currentStage.setScene(gameScene);
         });
     }
 
+    void rotateAssam() {
+        Marrakech.rotateAssam(assam.toString(),90);
+    }
+
 
     private void setPlayerCount(int count) {
         this.playerCount = count;
+    }
+
+    private void setTurn(int count) {
+        if (count == 2) {
+            turn.add("CYAN");
+            turn.add("YELLOW");
+        }
+        else if (count == 3) {
+            turn.add("CYAN");
+            turn.add("YELLOW");
+            turn.add("PURPLE");
+        }
+        else {
+            turn.add("CYAN");
+            turn.add("YELLOW");
+            turn.add("PURPLE");
+            turn.add("RED");
+        }
+        System.out.println(turn);
     }
 
     private Scene createGameScene() {
@@ -317,8 +356,8 @@ public class Game extends Application {
         double rectWidth = 160;
         double rectHeight = 80;
         for (int i = 0; i < 4; i++) {
-            Rectangle draggableRect = createDraggableRectangle(50, 150 + i * (rectHeight + 20), rectWidth, rectHeight, false);
-            draggableRect.setFill(Colour.colourToJavaFXColor(rectangleColors[i]));  // Set the rectangle color
+            Rectangle draggableRect = createDraggableRectangle(50, 150 + i * (rectHeight + 20), rectWidth, rectHeight, false, rectangleColors[i]);
+            draggableRect.setFill(Colour.colourToJavaFXColor(rectangleColors[i]));
             root.getChildren().add(draggableRect);
         }
 
@@ -326,7 +365,7 @@ public class Game extends Application {
         double rectHeightV = 160;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                Rectangle draggableRect = createDraggableRectangle(1000 + i * (rectWidthV + 20), 150 + j * (rectHeightV + 10), rectWidthV, rectHeightV, true);
+                Rectangle draggableRect = createDraggableRectangle(1000 + i * (rectWidthV + 20), 150 + j * (rectHeightV + 10), rectWidthV, rectHeightV, true, rectangleColors[i * 2 + j]);
                 draggableRect.setFill(Colour.colourToJavaFXColor(rectangleColors[i * 2 + j]));
                 root.getChildren().add(draggableRect);
             }
