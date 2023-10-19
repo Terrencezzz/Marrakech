@@ -1,9 +1,6 @@
 package comp1110.ass2.gui;
 
-import comp1110.ass2.BasicClasses.Assam;
-import comp1110.ass2.BasicClasses.Board;
-import comp1110.ass2.BasicClasses.GameStatus;
-import comp1110.ass2.BasicClasses.Player;
+import comp1110.ass2.BasicClasses.*;
 import comp1110.ass2.EnumClasses.Colour;
 import comp1110.ass2.EnumClasses.Direction;
 import comp1110.ass2.FunctionalClasses.Die;
@@ -33,7 +30,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-//JavaFx is bull shit
+/**
+ * @author Terrnece Wu
+ */
 
 public class Game extends Application {
 
@@ -48,15 +47,18 @@ public class Game extends Application {
     int col = 0;
     int index = 0;
     double rotationAngle;
-    int rotateTime = 0;
+    int rotateTime = 1;
+    int totalRound = 15;
     List<String> turn = new ArrayList<>();
     List<Player> allPlayers = new ArrayList<>();
     Assam assam = new Assam("A33N");
     String assamString = assam.toString();
     Board board = new Board("n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00n00");
+    GameStatus g = new GameStatus(allPlayers,assam,board);
+    String gameString = g.toString();
     IntPair position1;
     IntPair position2;
-    String gameStatus = "Game Process";
+    String gameStatus = "Game Start";
     String assanStatus = "Not Yet";
 
 
@@ -117,33 +119,32 @@ public class Game extends Application {
         imageView.setOnMouseClicked(e -> {
             if (gameStatus.equals("Game Start")) {
                 rotationAngle += 90;
-                rotateAssam(90);
+                rotateAssam();
                 if (rotationAngle == 360) {
                     rotationAngle = 0;
                 }
                 Assam newAssam = new Assam(assamString);
                 GameStatus g = new GameStatus(allPlayers,newAssam,board);
+                updateGameString(g);
                 displayGame(g.toString());
             }
             else if (gameStatus.equals("Game Process") && assanStatus.equals("Not Yet")) {
                 rotationAngle += 90;
-                updateRotateTime();
                 if (rotationAngle == 360) {
                     rotationAngle = 0;
                 }
 
                 if (rotateTime == 2) {
-                    rotationAngle += 90;
+                    rotateAssam();
                     updateRotateTime();
                 }
 
-                rotateAssam((int)rotationAngle);
+                rotateAssam();
+                updateRotateTime();
                 Assam newAssam = new Assam(assamString);
                 GameStatus g = new GameStatus(allPlayers,newAssam,board);
+                updateGameString(g);
                 displayGame(g.toString());
-                System.out.println(rotationAngle);
-                System.out.println(assamString);
-                System.out.println(rotateTime);
             }
         });
 
@@ -183,15 +184,44 @@ public class Game extends Application {
         rightPlayerBox.setLayoutX(WINDOW_WIDTH - 240);
         rightPlayerBox.setLayoutY(10);
 
+        leftPlayerBox.setId("background");
+        rightPlayerBox.setId("background");
+
         root.getChildren().addAll(leftPlayerBox, rightPlayerBox);
+
+
+        Text text = new Text("Turn: " + turn.get(index));
+        text.setX(1000);
+        text.setY(600);
+        text.setFont(new Font(30));
+        root.getChildren().add(text);
+
+        Colour[] rectangleColors = {Colour.YELLOW, Colour.PURPLE, Colour.CYAN, Colour.RED};
+        double rectWidth = 160;
+        double rectHeight = 80;
+        for (int i = 0; i < 4; i++) {
+            Rectangle draggableRect = createDraggableRectangle(50, 150 + i * (rectHeight + 20), rectWidth, rectHeight, false, rectangleColors[i]);
+            draggableRect.setFill(Colour.colourToJavaFXColor(rectangleColors[i]));
+            root.getChildren().add(draggableRect);
+        }
+
+        double rectWidthV = 80;
+        double rectHeightV = 160;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                Rectangle draggableRect = createDraggableRectangle(1000 + i * (rectWidthV + 20), 150 + j * (rectHeightV + 10), rectWidthV, rectHeightV, true, rectangleColors[i * 2 + j]);
+                draggableRect.setFill(Colour.colourToJavaFXColor(rectangleColors[i * 2 + j]));
+                root.getChildren().add(draggableRect);
+            }
+        }
     }
 
     void updateRotateTime() {
-        if (rotateTime < 3) {
+        if (rotateTime < 4) {
             rotateTime += 1;
         }
         else {
-            rotateTime = 0;
+            rotateTime = 1;
         }
     }
 
@@ -231,20 +261,141 @@ public class Game extends Application {
                 if (vertical) {
                     col = (int) ((rect.getX() - 320) / side);
                     row = (int) ((rect.getY() - 70) / side);
-                    position1 = new IntPair(row, col);
-                    position2 = new IntPair(row+1, col);
+
+                    updatePosition1(row,col);
+                    updatePosition2(row+1,col);
+                    List<IntPair> positions = new ArrayList<>();
+                    positions.add(position1);
+                    positions.add(position2);
+                    if (checkRug(positions)) {
+                        makePlacement(positions);
+                        updateIndex();
+                        changeAssam();
+                        displayGame(gameString);
+                    }
                 }
                 else {
                     col = (int) ((rect.getX() - 320) / side);
                     row = (int) ((rect.getY() - 70) / side);
 
-                    position1 = new IntPair(row,col);
-                    position2 = new IntPair(row,col+1);
+                    updatePosition1(row,col);
+                    updatePosition2(row,col+1);
+                    List<IntPair> positions = new ArrayList<>();
+                    positions.add(position1);
+                    positions.add(position2);
+                    if (checkRug(positions)) {
+                        makePlacement(positions);
+                        updateIndex();
+                        changeAssam();
+                        displayGame(gameString);
+                    }
                 }
             });
         }
 
         return rect;
+    }
+
+    private boolean checkRug(List<IntPair> positions) {
+        Player p = allPlayers.get(index);
+        char colour = Colour.colourToChar(p.getPlayerColour());
+        int id = 15 - totalRound;
+        Rug r = new Rug(colour,id,positions);
+        return Marrakech.isPlacementValid(gameString,r.toString());
+    }
+
+    void updateIndex() {
+        if (playerCount == 2) {
+            if (index == 1) {
+                index = 0;
+                totalRound -= 1;
+            }
+            else {
+                index += 1;
+            }
+        }
+        else if (playerCount == 3) {
+            if (index == 2) {
+                index = 0;
+                totalRound -= 1;
+            }
+            else {
+                index += 1;
+            }
+        }
+        else {
+            if (index == 3) {
+                index = 0;
+                totalRound -= 1;
+            }
+            else {
+                index += 1;
+            }
+        }
+    }
+
+    void changeAssam() {
+        assanStatus = "Not Yet";
+    }
+
+    void updatePosition1(int row, int col) {
+        position1 = new IntPair(row,col);
+
+    }
+
+    void updatePosition2(int row, int col) {
+        position2 = new IntPair(row,col);
+    }
+
+    void makePlacement(List<IntPair> positions) {
+        if (turn.get(index).equals("CYAN")) {
+            for (Player Player : allPlayers) {
+                if (Colour.colourToChar(Player.getPlayerColour()) == 'c') {
+                    int id = 15 - totalRound;
+                    Rug r = new Rug('c',id,positions);
+                    gameString = Marrakech.makePlacement(gameString,r.toString());
+                    GameStatus game = new GameStatus(gameString);
+                    board = game.getBoard();
+                    allPlayers = game.getPlayers();
+                }
+            }
+        }
+        else if (turn.get(index).equals("YELLOW")) {
+            for (Player Player : allPlayers) {
+                if (Colour.colourToChar(Player.getPlayerColour()) == 'y') {
+                    int id = 15 - totalRound;
+                    Rug r = new Rug('y',id,positions);
+                    gameString = Marrakech.makePlacement(gameString,r.toString());
+                    GameStatus game = new GameStatus(gameString);
+                    board = game.getBoard();
+                    allPlayers = game.getPlayers();
+                }
+            }
+        }
+        else if (turn.get(index).equals("PURPLE")) {
+            for (Player Player : allPlayers) {
+                if (Colour.colourToChar(Player.getPlayerColour()) == 'p') {
+                    int id = 15 - totalRound;
+                    Rug r = new Rug('p',id,positions);
+                    gameString = Marrakech.makePlacement(gameString,r.toString());
+                    GameStatus game = new GameStatus(gameString);
+                    board = game.getBoard();
+                    allPlayers = game.getPlayers();
+                }
+            }
+        }
+        else if (turn.get(index).equals("RED")) {
+            for (Player Player : allPlayers) {
+                if (Colour.colourToChar(Player.getPlayerColour()) == 'r') {
+                    int id = 15 - totalRound;
+                    Rug r = new Rug('r',id,positions);
+                    gameString = Marrakech.makePlacement(gameString,r.toString());
+                    GameStatus game = new GameStatus(gameString);
+                    board = game.getBoard();
+                    allPlayers = game.getPlayers();
+                }
+            }
+        }
     }
 
 
@@ -290,24 +441,25 @@ public class Game extends Application {
     private GameStatus setupInitialGameStatus(int playerCount) {
 
         if (playerCount == 2) {
-            allPlayers.add(new Player(30,15,'i',Colour.CYAN));
-            allPlayers.add(new Player(30,15,'i',Colour.YELLOW));
+            allPlayers.add(new Player(1,15,'i',Colour.CYAN));
+            allPlayers.add(new Player(1,15,'i',Colour.YELLOW));
             allPlayers.add(new Player(0,0,'o',Colour.PURPLE));
             allPlayers.add(new Player(0,0,'o',Colour.RED));
         } else if (playerCount == 3) {
-            allPlayers.add(new Player(30,15,'i',Colour.CYAN));
-            allPlayers.add(new Player(30,15,'i',Colour.YELLOW));
-            allPlayers.add(new Player(30,15,'i',Colour.PURPLE));
+            allPlayers.add(new Player(1,15,'i',Colour.CYAN));
+            allPlayers.add(new Player(1,15,'i',Colour.YELLOW));
+            allPlayers.add(new Player(1,15,'i',Colour.PURPLE));
             allPlayers.add(new Player(0,0,'o',Colour.RED));
         } else {
-            allPlayers.add(new Player(30,15,'i',Colour.CYAN));
-            allPlayers.add(new Player(30,15,'i',Colour.YELLOW));
-            allPlayers.add(new Player(30,15,'i',Colour.PURPLE));
-            allPlayers.add(new Player(30,15,'i',Colour.RED));
+            allPlayers.add(new Player(1,15,'i',Colour.CYAN));
+            allPlayers.add(new Player(1,15,'i',Colour.YELLOW));
+            allPlayers.add(new Player(1,15,'i',Colour.PURPLE));
+            allPlayers.add(new Player(1,15,'i',Colour.RED));
         }
 
         return new GameStatus(allPlayers, assam, board);
     }
+
 
     private void setupPlayerButton(Button button, int playerCount) {
         button.setPrefWidth(300);
@@ -322,8 +474,8 @@ public class Game extends Application {
         });
     }
 
-    void rotateAssam(int r) {
-        assamString = Marrakech.rotateAssam(assamString,r);
+    void rotateAssam() {
+        assamString = Marrakech.rotateAssam(assamString,90);
     }
 
 
@@ -349,12 +501,72 @@ public class Game extends Application {
         }
     }
 
+    void updateGameString(GameStatus g) {
+        gameString = g.toString();
+    }
+
     private void applyTransform() {
         assamString = Marrakech.moveAssam(assamString, Die.getDieNumber());
         gameStatus = "Game Process";
         assanStatus = "Moved";
     }
 
+    void payment() {
+        GameStatus game = new GameStatus(gameString);
+        Assam a = game.getAssam();
+
+        IntPair p = a.getPosition();
+        Colour c = Board.getColour(Board.getColourList(gameString),p); //Assam stand
+        
+        char sta = 0;
+        Player pg = null;
+        for (Player pc : allPlayers) {
+            if (pc.getPlayerColour().equals(c)) {
+                pg = pc;
+                sta = pc.getStatus();
+            }
+        }
+        
+        if (!allPlayers.get(index).getPlayerColour().equals(c) && sta == 'i') {
+            int pay = Marrakech.getPaymentAmount(gameString);
+            int money = allPlayers.get(index).getDirhams();
+
+            int moneyG = pg.getDirhams();
+            int indexG = allPlayers.indexOf(pg);
+            
+            if (money > pay) {
+                Player player = new Player(money-pay,allPlayers.get(index).getRugNumber(),allPlayers.get(index).getStatus(),allPlayers.get(index).getPlayerColour());
+                allPlayers.set(index,player);
+
+                Player playerG = new Player(moneyG+pay,pg.getRugNumber(),pg.getStatus(),pg.getPlayerColour());
+                allPlayers.set(indexG,playerG);
+            }
+            else {
+                Player player = new Player(0,allPlayers.get(index).getRugNumber(),'o',allPlayers.get(index).getPlayerColour());
+                allPlayers.set(index,player);
+
+                Player playerG = new Player(moneyG+money,pg.getRugNumber(),pg.getStatus(),pg.getPlayerColour());
+                allPlayers.set(indexG,playerG);
+
+                playerCount -= 1;
+                turn.remove(index);
+                System.out.println(turn);
+
+                if (index == playerCount) {
+                    index = 0;
+                }
+
+                System.out.println(index);
+
+                assanStatus = "Not Yet";
+
+                game = new GameStatus(allPlayers,assam,board);
+                updateGameString(game);
+                displayGame(gameString);
+            }
+            
+        }
+    }
     private Scene createGameScene() {
 
         Button goButton = new Button("GO");
@@ -368,6 +580,10 @@ public class Game extends Application {
                 applyTransform();
                 Assam newAssam = new Assam(assamString);
                 GameStatus g = new GameStatus(allPlayers,newAssam,board);
+                updateGameString(g);
+                payment();
+                g = new GameStatus(allPlayers,newAssam,board);
+                updateGameString(g);
                 displayGame(g.toString());
             }
         });
@@ -423,39 +639,19 @@ public class Game extends Application {
 
         displayGame(setupInitialGameStatus(playerCount).toString());
 
-
-        Colour[] rectangleColors = {Colour.YELLOW, Colour.PURPLE, Colour.CYAN, Colour.RED};
-        double rectWidth = 160;
-        double rectHeight = 80;
-        for (int i = 0; i < 4; i++) {
-            Rectangle draggableRect = createDraggableRectangle(50, 150 + i * (rectHeight + 20), rectWidth, rectHeight, false, rectangleColors[i]);
-            draggableRect.setId("background");
-            draggableRect.setFill(Colour.colourToJavaFXColor(rectangleColors[i]));
-            root.getChildren().add(draggableRect);
-        }
-
-        double rectWidthV = 80;
-        double rectHeightV = 160;
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
-                Rectangle draggableRect = createDraggableRectangle(1000 + i * (rectWidthV + 20), 150 + j * (rectHeightV + 10), rectWidthV, rectHeightV, true, rectangleColors[i * 2 + j]);
-                draggableRect.setId("background");
-                draggableRect.setFill(Colour.colourToJavaFXColor(rectangleColors[i * 2 + j]));
-                root.getChildren().add(draggableRect);
-            }
-        }
-
-        Text text = new Text("Turn: " + turn.get(index));
-        text.setId("background");
-        text.setX(1000);
-        text.setY(600);
-        text.setFont(new Font(30));
-        root.getChildren().add(text);
-
         return new Scene(this.root, WINDOW_WIDTH, WINDOW_HEIGHT);
     }
 
 
+    private Scene showWinner() {
+        Text winner = new Text("The Winner is: ");
+        winner.setX(1000);
+        winner.setY(600);
+        winner.setFont(new Font(30));
+        root.getChildren().add(winner);
+
+        return new Scene(this.root, WINDOW_WIDTH, WINDOW_HEIGHT);
+    }
 
     public static void main(String[] args) {
         launch(args);

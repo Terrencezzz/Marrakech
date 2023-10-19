@@ -51,11 +51,6 @@ public class Player {
         return colour;
     }
 
-    public void setColour(Colour colour) {
-        this.colour = colour;
-    }
-
-
     public static List<Player> newPlayer_Rug(List<Player> players, Rug rug) {
         for (Player player : players) {
             if (player.colour == rug.getColour()) {
