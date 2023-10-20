@@ -668,9 +668,20 @@ public class Game extends Application {
         greyBoard.setX((double) (WINDOW_WIDTH - 560) / 2);
         greyBoard.setY((double) (WINDOW_HEIGHT - 560) / 2);
 
-        root.getChildren().add(greyBoard);
+        double x = greyBoard.getX();
+        double y = greyBoard.getY();
+        double side = 80;
 
-
+        for (int row = 0; row < 7; row++) {
+            for (int col = 0; col < 7; col++) {
+                Rectangle square = new Rectangle(x + col * side, y + row * side, side, side);
+                square.setFill(Color.GREY);
+                square.setStroke(Color.BLACK);
+                square.setStrokeWidth(1);
+                square.setId("background");
+                root.getChildren().add(square);
+            }
+        }
         displayGame(setupInitialGameStatus(playerCount).toString());
 
         return new Scene(this.root, WINDOW_WIDTH, WINDOW_HEIGHT);
