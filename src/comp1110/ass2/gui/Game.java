@@ -241,7 +241,7 @@ public class Game extends Application {
         rect.setStroke(Color.BLACK);
         rect.setStrokeWidth(2);
 
-        if (turn.get(index).equals(rectangleColour.toString())) {
+        if (turn.get(index).equals(rectangleColour.toString()) && assanStatus.equals("Moved")) {
             rect.setOnMousePressed(event -> {
                 offsetX = event.getSceneX() - rect.getX();
                 offsetY = event.getSceneY() - rect.getY();
@@ -347,6 +347,27 @@ public class Game extends Application {
         position2 = new IntPair(row,col);
     }
 
+    void winner() {
+        if (Marrakech.isGameOver(gameString)) {
+            char winner = Marrakech.getWinner(gameString);
+            openWinnerScreen(winner);
+        }
+    }
+
+    void openWinnerScreen(char winner) {
+        Stage stage = new Stage();
+        stage.setTitle("Winner");
+
+        StackPane root = new StackPane();
+        Label label = new Label("Winner: " + winner);
+        root.getChildren().add(label);
+
+        Scene scene = new Scene(root, 200, 200);
+        stage.setScene(scene);
+
+        stage.show();
+    }
+
     void makePlacement(List<IntPair> positions) {
         if (turn.get(index).equals("CYAN")) {
             for (Player Player : allPlayers) {
@@ -357,6 +378,7 @@ public class Game extends Application {
                     GameStatus game = new GameStatus(gameString);
                     board = game.getBoard();
                     allPlayers = game.getPlayers();
+                    winner();
                 }
             }
         }
@@ -369,6 +391,7 @@ public class Game extends Application {
                     GameStatus game = new GameStatus(gameString);
                     board = game.getBoard();
                     allPlayers = game.getPlayers();
+                    winner();
                 }
             }
         }
@@ -381,6 +404,7 @@ public class Game extends Application {
                     GameStatus game = new GameStatus(gameString);
                     board = game.getBoard();
                     allPlayers = game.getPlayers();
+                    winner();
                 }
             }
         }
@@ -393,6 +417,7 @@ public class Game extends Application {
                     GameStatus game = new GameStatus(gameString);
                     board = game.getBoard();
                     allPlayers = game.getPlayers();
+                    winner();
                 }
             }
         }
@@ -441,20 +466,20 @@ public class Game extends Application {
     private GameStatus setupInitialGameStatus(int playerCount) {
 
         if (playerCount == 2) {
-            allPlayers.add(new Player(1,15,'i',Colour.CYAN));
-            allPlayers.add(new Player(1,15,'i',Colour.YELLOW));
+            allPlayers.add(new Player(30,15,'i',Colour.CYAN));
+            allPlayers.add(new Player(30,15,'i',Colour.YELLOW));
             allPlayers.add(new Player(0,0,'o',Colour.PURPLE));
             allPlayers.add(new Player(0,0,'o',Colour.RED));
         } else if (playerCount == 3) {
-            allPlayers.add(new Player(1,15,'i',Colour.CYAN));
-            allPlayers.add(new Player(1,15,'i',Colour.YELLOW));
-            allPlayers.add(new Player(1,15,'i',Colour.PURPLE));
+            allPlayers.add(new Player(30,15,'i',Colour.CYAN));
+            allPlayers.add(new Player(30,15,'i',Colour.YELLOW));
+            allPlayers.add(new Player(30,15,'i',Colour.PURPLE));
             allPlayers.add(new Player(0,0,'o',Colour.RED));
         } else {
-            allPlayers.add(new Player(1,15,'i',Colour.CYAN));
-            allPlayers.add(new Player(1,15,'i',Colour.YELLOW));
-            allPlayers.add(new Player(1,15,'i',Colour.PURPLE));
-            allPlayers.add(new Player(1,15,'i',Colour.RED));
+            allPlayers.add(new Player(30,15,'i',Colour.CYAN));
+            allPlayers.add(new Player(30,15,'i',Colour.YELLOW));
+            allPlayers.add(new Player(30,15,'i',Colour.PURPLE));
+            allPlayers.add(new Player(30,15,'i',Colour.RED));
         }
 
         return new GameStatus(allPlayers, assam, board);
@@ -540,29 +565,38 @@ public class Game extends Application {
 
                 Player playerG = new Player(moneyG+pay,pg.getRugNumber(),pg.getStatus(),pg.getPlayerColour());
                 allPlayers.set(indexG,playerG);
+                winner();
             }
             else {
-                Player player = new Player(0,allPlayers.get(index).getRugNumber(),'o',allPlayers.get(index).getPlayerColour());
-                allPlayers.set(index,player);
+                String str = turn.get(index);
+                Player player = null;
+                for (Player pla : allPlayers) {
+                    if (pla.getPlayerColour().toString().equals(str)) {
+                        player = pla;
+                    }
+                }
+
+                int j = allPlayers.indexOf(player);
+                player = new Player(0,allPlayers.get(j).getRugNumber(),'o',allPlayers.get(j).getPlayerColour());
+                allPlayers.set(j,player);
 
                 Player playerG = new Player(moneyG+money,pg.getRugNumber(),pg.getStatus(),pg.getPlayerColour());
                 allPlayers.set(indexG,playerG);
 
                 playerCount -= 1;
                 turn.remove(index);
-                System.out.println(turn);
 
                 if (index == playerCount) {
                     index = 0;
+                    totalRound -= 1;
                 }
-
-                System.out.println(index);
 
                 assanStatus = "Not Yet";
 
                 game = new GameStatus(allPlayers,assam,board);
                 updateGameString(game);
                 displayGame(gameString);
+                winner();
             }
             
         }
@@ -638,17 +672,6 @@ public class Game extends Application {
 
 
         displayGame(setupInitialGameStatus(playerCount).toString());
-
-        return new Scene(this.root, WINDOW_WIDTH, WINDOW_HEIGHT);
-    }
-
-
-    private Scene showWinner() {
-        Text winner = new Text("The Winner is: ");
-        winner.setX(1000);
-        winner.setY(600);
-        winner.setFont(new Font(30));
-        root.getChildren().add(winner);
 
         return new Scene(this.root, WINDOW_WIDTH, WINDOW_HEIGHT);
     }
