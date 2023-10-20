@@ -348,8 +348,10 @@ public class Game extends Application {
     }
 
     void winner() {
-        if (Marrakech.isGameOver(gameString)) {
-            char winner = Marrakech.getWinner(gameString);
+        System.out.println(gameString);
+        char winner = Marrakech.getWinner(gameString);
+        System.out.println(winner);
+        if (winner != 'n') {
             openWinnerScreen(winner);
         }
     }
@@ -378,7 +380,6 @@ public class Game extends Application {
                     GameStatus game = new GameStatus(gameString);
                     board = game.getBoard();
                     allPlayers = game.getPlayers();
-                    winner();
                 }
             }
         }
@@ -391,7 +392,6 @@ public class Game extends Application {
                     GameStatus game = new GameStatus(gameString);
                     board = game.getBoard();
                     allPlayers = game.getPlayers();
-                    winner();
                 }
             }
         }
@@ -404,7 +404,6 @@ public class Game extends Application {
                     GameStatus game = new GameStatus(gameString);
                     board = game.getBoard();
                     allPlayers = game.getPlayers();
-                    winner();
                 }
             }
         }
@@ -417,7 +416,6 @@ public class Game extends Application {
                     GameStatus game = new GameStatus(gameString);
                     board = game.getBoard();
                     allPlayers = game.getPlayers();
-                    winner();
                 }
             }
         }
@@ -619,6 +617,8 @@ public class Game extends Application {
                 g = new GameStatus(allPlayers,newAssam,board);
                 updateGameString(g);
                 displayGame(g.toString());
+                System.out.println(gameString);
+                winner();
             }
         });
 
