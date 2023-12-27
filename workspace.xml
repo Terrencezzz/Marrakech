@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="05a71625-297f-4270-90e1-58d69f68006a" name="Changes" comment="Update the link" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2U6TBioN3nimrsdJYaDEpl6l3MN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/wuwan/IdeaProjects/comp1110-ass2/admin&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wuwan\IdeaProjects\comp1110-ass2\admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\wuwan\IdeaProjects\comp1110-ass2\src\comp1110\ass2\gui" />
+      <recent name="C:\Users\wuwan\IdeaProjects\comp1110-ass2\src\comp1110\ass2\images" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="comp1110.ass2" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Game">
+    <configuration name="ApplyTransformTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="comp1110-ass2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="comp1110.ass2.myTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="comp1110.ass2.myTest" />
+      <option name="MAIN_CLASS_NAME" value="comp1110.ass2.myTest.ApplyTransformTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GetColourListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="comp1110-ass2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="comp1110.ass2.myTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="comp1110.ass2.myTest" />
+      <option name="MAIN_CLASS_NAME" value="comp1110.ass2.myTest.GetColourListTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GetPlayersColorsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="comp1110-ass2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="comp1110.ass2.myTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="comp1110.ass2.myTest" />
+      <option name="MAIN_CLASS_NAME" value="comp1110.ass2.myTest.GetPlayersColorsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MakePlacementTest.validTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="comp1110-ass2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="comp1110.ass2.myTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="comp1110.ass2" />
+      <option name="MAIN_CLASS_NAME" value="comp1110.ass2.MakePlacementTest" />
+      <option name="METHOD_NAME" value="validTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="comp1110.ass2.myTest in comp1110-ass2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="comp1110-ass2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="comp1110.ass2.myTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="comp1110.ass2.myTest" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MakePlacementTest.validTest" />
+        <item itemvalue="JUnit.comp1110.ass2.myTest in comp1110-ass2" />
+        <item itemvalue="JUnit.GetColourListTest" />
+        <item itemvalue="JUnit.GetPlayersColorsTest" />
+        <item itemvalue="JUnit.ApplyTransformTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="05a71625-297f-4270-90e1-58d69f68006a" name="Changes" comment="" />
+      <created>1692258898314</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692258898314</updated>
+      <workItem from="1692258899866" duration="53000" />
+      <workItem from="1692439766801" duration="19514000" />
+      <workItem from="1692507817393" duration="9930000" />
+      <workItem from="1692523442182" duration="6280000" />
+      <workItem from="1692604002452" duration="665000" />
+      <workItem from="1692676548866" duration="12144000" />
+      <workItem from="1692695398108" duration="629000" />
+      <workItem from="1692696450725" duration="1221000" />
+      <workItem from="1692711258399" duration="2197000" />
+      <workItem from="1692798342036" duration="19000" />
+      <workItem from="1692800988694" duration="14000" />
+      <workItem from="1692857222265" duration="9000" />
+      <workItem from="1692857501203" duration="2423000" />
+      <workItem from="1693912412892" duration="122000" />
+      <workItem from="1694104636599" duration="5796000" />
+      <workItem from="1694174472519" duration="4859000" />
+      <workItem from="1694258152542" duration="13046000" />
+      <workItem from="1694284174060" duration="4295000" />
+      <workItem from="1694343473135" duration="17490000" />
+      <workItem from="1694373523471" duration="8702000" />
+      <workItem from="1694397910785" duration="4737000" />
+      <workItem from="1694526885978" duration="5589000" />
+      <workItem from="1694606818962" duration="7820000" />
+      <workItem from="1694621196684" duration="13913000" />
+      <workItem from="1694638405884" duration="2106000" />
+      <workItem from="1694640601167" duration="91000" />
+      <workItem from="1694640803764" duration="422000" />
+      <workItem from="1694641274799" duration="260000" />
+      <workItem from="1694641545061" duration="62000" />
+      <workItem from="1694641616687" duration="373000" />
+      <workItem from="1694642141829" duration="88000" />
+      <workItem from="1694642239869" duration="26000" />
+      <workItem from="1694642520494" duration="1504000" />
+      <workItem from="1694644136807" duration="664000" />
+      <workItem from="1694645124959" duration="34000" />
+      <workItem from="1694680994884" duration="2155000" />
+      <workItem from="1694688816769" duration="14506000" />
+      <workItem from="1694707010346" duration="21172000" />
+      <workItem from="1694728497353" duration="2419000" />
+      <workItem from="1694732974124" duration="138000" />
+      <workItem from="1694942661351" duration="1988000" />
+      <workItem from="1695029862623" duration="295000" />
+      <workItem from="1695276442839" duration="17000" />
+      <workItem from="1695277177675" duration="659000" />
+      <workItem from="1695565421280" duration="8731000" />
+      <workItem from="1695576067279" duration="3430000" />
+      <workItem from="1695640263749" duration="19613000" />
+      <workItem from="1695753417940" duration="5796000" />
+      <workItem from="1695759825426" duration="1660000" />
+      <workItem from="1695813049321" duration="26951000" />
+      <workItem from="1695881546152" duration="3770000" />
+      <workItem from="1695885473419" duration="147000" />
+      <workItem from="1695886593013" duration="159000" />
+      <workItem from="1696073892092" duration="8935000" />
+      <workItem from="1696142692833" duration="3318000" />
+      <workItem from="1696164132343" duration="634000" />
+      <workItem from="1696241453642" duration="19678000" />
+      <workItem from="1696318569555" duration="4256000" />
+      <workItem from="1696398849705" duration="21162000" />
+      <workItem from="1696482350544" duration="4978000" />
+      <workItem from="1696502658486" duration="2560000" />
+      <workItem from="1696673006202" duration="309000" />
+      <workItem from="1696673413757" duration="1040000" />
+      <workItem from="1697554571867" duration="50251000" />
+      <workItem from="1697727005841" duration="36212000" />
+      <workItem from="1697765962433" duration="1823000" />
+      <workItem from="1697767931191" duration="69000" />
+      <workItem from="1697905649707" duration="3052000" />
+      <workItem from="1697925427359" duration="3111000" />
+      <workItem from="1697928772139" duration="770000" />
+      <workItem from="1697930284145" duration="277000" />
+      <workItem from="1698017295257" duration="7000" />
+      <workItem from="1698122193228" duration="17000" />
+      <workItem from="1698122552486" duration="617000" />
+      <workItem from="1698144499384" duration="111000" />
+      <workItem from="1698195494871" duration="601000" />
+      <workItem from="1698723367684" duration="730000" />
+      <workItem from="1698744281777" duration="31000" />
+      <workItem from="1699351342881" duration="1835000" />
+      <workItem from="1699410288123" duration="94000" />
+      <workItem from="1699540917349" duration="35000" />
+      <workItem from="1700807294981" duration="76000" />
+      <workItem from="1700829822149" duration="615000" />
+      <workItem from="1701267037833" duration="6000" />
+      <workItem from="1701308731755" duration="986000" />
+      <workItem from="1701837030050" duration="359000" />
+    </task>
+    <task id="LOCAL-00058" summary="remove ApplyTransformTest">
+      <option name="closed" value="true" />
+      <created>1695661517157</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1695661517157</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Task9 done">
+      <option name="closed" value="true" />
+      <created>1695664469148</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1695664469148</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Add GetColourListTest.java">
+      <option name="closed" value="true" />
+      <created>1695757658567</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1695757658568</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Add DirectionTest.java">
+      <option name="closed" value="true" />
+      <created>1695758152010</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1695758152010</updated>
+    </task>
+    <task id="LOCAL-00062" summary="originality">
+      <option name="closed" value="true" />
+      <created>1695758788277</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1695758788277</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Add RotationTest.java">
+      <option name="closed" value="true" />
+      <created>1695759470666</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1695759470666</updated>
+    </task>
+    <task id="LOCAL-00064" summary="originality">
+      <option name="closed" value="true" />
+      <created>1695759579945</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1695759579945</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Task10 done">
+      <option name="closed" value="true" />
+      <created>1695825254976</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1695825254976</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Task8 done">
+      <option name="closed" value="true" />
+      <created>1695833324436</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1695833324436</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Task12 done">
+      <option name="closed" value="true" />
+      <created>1695841865585</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1695841865585</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Fix GetColourListTest.java">
+      <option name="closed" value="true" />
+      <created>1695842066650</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1695842066650</updated>
+    </task>
+    <task id="LOCAL-00069" summary="test plan">
+      <option name="closed" value="true" />
+      <created>1695882632179</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1695882632179</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Add some packages.">
+      <option name="closed" value="true" />
+      <created>1695883743534</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1695883743534</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Add some packages.">
+      <option name="closed" value="true" />
+      <created>1695883805776</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1695883805776</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Add some packages.">
+      <option name="closed" value="true" />
+      <created>1695885264467</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1695885264467</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Fix task4 due to the test changes.">
+      <option name="closed" value="true" />
+      <created>1696078999204</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1696078999206</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Fix task10 due to the test changes.">
+      <option name="closed" value="true" />
+      <created>1696080160698</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1696080160698</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Fix task12 due to the test changes.">
+      <option name="closed" value="true" />
+      <created>1696085811678</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1696085811678</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Game.jar">
+      <option name="closed" value="true" />
+      <created>1696143237602</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1696143237603</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Game.jar">
+      <option name="closed" value="true" />
+      <created>1696146113515</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1696146113515</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Move IntPair Class form basic package to functional package.">
+      <option name="closed" value="true" />
+      <created>1696245496608</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1696245496609</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Task11 done.">
+      <option name="closed" value="true" />
+      <created>1696257677876</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1696257677876</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Contribution and originality.">
+      <option name="closed" value="true" />
+      <created>1696260255824</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1696260255824</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Code review.">
+      <option name="closed" value="true" />
+      <created>1696267886077</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1696267886077</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Url and licence in originality.">
+      <option name="closed" value="true" />
+      <created>1696268617538</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1696268617539</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Code review.">
+      <option name="closed" value="true" />
+      <created>1696268941885</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1696268941885</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Override toString to every single basic classes.">
+      <option name="closed" value="true" />
+      <created>1696407544713</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1696407544713</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Partial work for task14.">
+      <option name="closed" value="true" />
+      <created>1696421462312</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1696421462312</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Change code review.">
+      <option name="closed" value="true" />
+      <created>1696438027971</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1696438027971</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Change code review.">
+      <option name="closed" value="true" />
+      <created>1696483447250</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1696483447250</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Add author">
+      <option name="closed" value="true" />
+      <created>1696487706640</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1696487706640</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Add author">
+      <option name="closed" value="true" />
+      <created>1696502773297</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1696502773297</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Task14 done">
+      <option name="closed" value="true" />
+      <created>1696503272998</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1696503272998</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Contribution">
+      <option name="closed" value="true" />
+      <created>1696503984827</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1696503984827</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Originality">
+      <option name="closed" value="true" />
+      <created>1696504053493</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1696504053493</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Finish &quot;best&quot; and delete no usage functions.">
+      <option name="closed" value="true" />
+      <created>1697555314047</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1697555314048</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Create start page and player choice page.">
+      <option name="closed" value="true" />
+      <created>1697572382158</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1697572382158</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Improve game play">
+      <option name="closed" value="true" />
+      <created>1697637369439</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1697637369439</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Add another constructor for Rug, override toString() for Rug.">
+      <option name="closed" value="true" />
+      <created>1697647945790</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1697647945790</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Partial work for game play">
+      <option name="closed" value="true" />
+      <created>1697653914578</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1697653914578</updated>
+    </task>
+    <task id="LOCAL-00098" summary="yml">
+      <option name="closed" value="true" />
+      <created>1697654508403</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1697654508403</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Partial work for game play">
+      <option name="closed" value="true" />
+      <created>1697662368297</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1697662368297</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Basic game play">
+      <option name="closed" value="true" />
+      <created>1697758312730</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1697758312730</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Improve game play">
+      <option name="closed" value="true" />
+      <created>1697763319043</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1697763319043</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Game play finish">
+      <option name="closed" value="true" />
+      <created>1697765046477</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1697765046477</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Improve board, everything finish.">
+      <option name="closed" value="true" />
+      <created>1697767386518</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1697767386519</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Delete all the sout for testing, everything finish">
+      <option name="closed" value="true" />
+      <created>1697767795221</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1697767795221</updated>
+    </task>
+    <task id="LOCAL-00105" summary="yml">
+      <option name="closed" value="true" />
+      <created>1697920812168</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1697920812168</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Update the link">
+      <option name="closed" value="true" />
+      <created>1697930309747</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1697930309747</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Fix task12 due to the test changes." />
+    <MESSAGE value="Game.jar" />
+    <MESSAGE value="Move IntPair Class form basic package to functional package." />
+    <MESSAGE value="Task11 done." />
+    <MESSAGE value="Contribution and originality." />
+    <MESSAGE value="Url and licence in originality." />
+    <MESSAGE value="Code review." />
+    <MESSAGE value="Override toString to every single basic classes." />
+    <MESSAGE value="Partial work for task14." />
+    <MESSAGE value="Change code review." />
+    <MESSAGE value="Add author" />
+    <MESSAGE value="Task14 done" />
+    <MESSAGE value="Contribution" />
+    <MESSAGE value="Originality" />
+    <MESSAGE value="Finish &quot;best&quot; and delete no usage functions." />
+    <MESSAGE value="Create start page and player choice page." />
+    <MESSAGE value="Add another constructor for Rug, override toString() for Rug." />
+    <MESSAGE value="Partial work for game play" />
+    <MESSAGE value="Basic game play" />
+    <MESSAGE value="Improve game play" />
+    <MESSAGE value="Game play finish" />
+    <MESSAGE value="Improve board, everything finish." />
+    <MESSAGE value="Delete all the sout for testing, everything finish" />
+    <MESSAGE value="yml" />
+    <MESSAGE value="Update the link" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update the link" />
+  </component>
+</project>
